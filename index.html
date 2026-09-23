@@ -26,10 +26,9 @@
         </div>
     </div>
 
-    <!-- NAVBAR CON LOGO DE IMAGEN -->
+    <!-- NAVBAR CON CARRITO Y LOGO -->
     <header class="navbar">
         <div class="logo">
-            <!-- Espacio para la imagen del logo -->
             <img src="img/logo.png" alt="Logo Alashmoon" class="navbar-logo-img" onerror="this.style.display='none'">
             <span>ALASHMOON</span>
         </div>
@@ -39,16 +38,45 @@
                 <li><a href="#catalogo">Catálogo</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#experiencias">Experiencias</a></li>
-                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <button class="cart-btn" onclick="toggleCartModal()">
+                        <i class="fa-solid fa-cart-shopping"></i> 
+                        <span id="cart-count">0</span>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- MODAL DEL CARRITO DE COMPRAS -->
+    <div id="cart-modal" class="cart-modal hidden">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h3>
+                <button class="close-cart" onclick="toggleCartModal()">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items-list">
+                <!-- Los productos agregados aparecerán aquí dinámicamente -->
+                <p class="empty-cart-text">Tu carrito está vacío.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total-price">$0 COP</span>
+                </div>
+                <button class="btn-checkout-whatsapp" onclick="enviarCarritoWhatsApp()">
+                    <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- SECCIÓN INICIO (HERO) -->
     <section id="inicio" class="hero">
         <div class="hero-glow-bg"></div>
         <div class="hero-content">
-            <img src="img/logo1.jpg" alt="logo empresarial" class="img-fluid">
+            <img src="img/logo1.jpg" alt="logo empresarial" class="img-fluid" onerror="this.style.display='none'">
             <h1>Inmortaliza tus momentos con arte y tecnología</h1>
             <div class="hero-buttons">
                 <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
@@ -78,9 +106,9 @@
                     <div class="card-body">
                         <h3>Rosa Eterna Individual</h3>
                         <p>Una rosa en fomi con acabado premium, ideal para un detalle simple pero inolvidable.</p>
-                        <span class="price">$12.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Rosa Eterna Individual')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="12000">$12.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Rosa Eterna Individual', 12000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -94,9 +122,9 @@
                     <div class="card-body">
                         <h3>Girasol Eterno</h3>
                         <p>El toque de alegría y energía perfecto para alegrarle el día a alguien especial.</p>
-                        <span class="price">$15.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Girasol Eterno')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="15000">$15.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Girasol Eterno', 15000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -111,9 +139,9 @@
                     <div class="card-body">
                         <h3>Ramo de 10 Rosas Eternas</h3>
                         <p>Diez rosas en fomi que nunca se marchitan. Elige tus colores favoritos.</p>
-                        <span class="price">$45.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Ramo de 10 Rosas Eternas')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="45000">$45.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Ramo de 10 Rosas Eternas', 45000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -127,9 +155,9 @@
                     <div class="card-body">
                         <h3>Ramo de 20 Rosas Eternas</h3>
                         <p>Doble impacto para ocasiones grandes: aniversarios, propuestas y más.</p>
-                        <span class="price">$78.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Ramo de 20 Rosas Eternas')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="78000">$78.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Ramo de 20 Rosas Eternas', 78000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -143,9 +171,9 @@
                     <div class="card-body">
                         <h3>Ramo Mixto (Rosas + Girasol)</h3>
                         <p>La combinación de elegancia y energía en un solo detalle. Tú eliges la mezcla.</p>
-                        <span class="price">$35.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Ramo Mixto (Rosas + Girasol)')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="35000">$35.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Ramo Mixto (Rosas + Girasol)', 35000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -168,9 +196,9 @@
                     <div class="card-body">
                         <h3>Cartelera Cuarto de Cartulina</h3>
                         <p>Formato compacto, perfecta para detalles pequeños y sorpresas rápidas.</p>
-                        <span class="price">$15.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Cartelera Cuarto de Cartulina')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="15000">$15.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Cartelera Cuarto de Cartulina', 15000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -184,9 +212,9 @@
                     <div class="card-body">
                         <h3>Cartelera Medio Pliego</h3>
                         <p>El tamaño ideal para declaraciones y mensajes con más protagonismo.</p>
-                        <span class="price">$28.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Cartelera Medio Pliego')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="28000">$28.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Cartelera Medio Pliego', 28000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -201,9 +229,9 @@
                     <div class="card-body">
                         <h3>Cartelera Pliego Completo</h3>
                         <p>Impacto máximo. Elige combinaciones de colores y decoración a tu gusto.</p>
-                        <span class="price">$45.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Cartelera Pliego Completo')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="45000">$45.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Cartelera Pliego Completo', 45000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -226,9 +254,9 @@
                     <div class="card-body">
                         <h3>Poema Corto</h3>
                         <p>Versos breves y directos para transmitir un sentimiento en pocas palabras.</p>
-                        <span class="price">$10.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Poema Corto')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="10000">$10.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Poema Corto', 10000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -242,9 +270,9 @@
                     <div class="card-body">
                         <h3>Poema Largo</h3>
                         <p>Composiciones extensas con licencia poética y detalles únicos de tu historia.</p>
-                        <span class="price">$18.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Poema Largo')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="18000">$18.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Poema Largo', 18000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -258,9 +286,9 @@
                     <div class="card-body">
                         <h3>Carta Romántica</h3>
                         <p>Expresa amor, admiración o gratitud con una carta redactada desde el corazón.</p>
-                        <span class="price">$15.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Carta Romántica')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="15000">$15.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Carta Romántica', 15000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -274,9 +302,9 @@
                     <div class="card-body">
                         <h3>Carta de Cumpleaños</h3>
                         <p>El mensaje perfecto para celebrar y emocionar en esa fecha especial.</p>
-                        <span class="price">$15.000 COP</span>
-                        <button class="btn-order" onclick="pedirProducto('Carta de Cumpleaños')">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        <span class="price" data-price="15000">$15.000 COP</span>
+                        <button class="btn-add-cart" onclick="agregarAlCarrito('Carta de Cumpleaños', 15000)">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
                         </button>
                     </div>
                 </div>
@@ -291,7 +319,7 @@
         
         <div class="about-container">
             <div class="about-text">
-                <p>Somos un equipo de emprendedores conformado por tres Jovenes. Unimos nuestra pasión por la tecnología, el diseño estético y el detalle artesanal para ofrecerte una experiencia de compra elegante, rápida y segura.</p>
+                <p>Somos un equipo de emprendedores conformado por tres jóvenes. Unimos nuestra pasión por la tecnología, el diseño estético y el detalle artesanal para ofrecerte una experiencia de compra elegante, rápida y segura.</p>
             </div>
             
             <div class="mission-vision">
@@ -317,7 +345,7 @@
         <div class="grid-reviews">
             <div class="review-card">
                 <div class="review-header">
-                    <img src="img/ramo1.jpg" alt="Producto entregado" class="review-img-mini">
+                    <img src="img/ramo1.jpg" alt="Producto entregado" class="review-img-mini" onerror="this.style.display='none'">
                     <div>
                         <h4>Camila Andrés</h4>
                         <a href="https://instagram.com" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i> @camila_detalles</a>
@@ -331,7 +359,7 @@
 
             <div class="review-card">
                 <div class="review-header">
-                    <img src="img/cartelera1.jpg" alt="Producto entregado" class="review-img-mini">
+                    <img src="img/cartelera1.jpg" alt="Producto entregado" class="review-img-mini" onerror="this.style.display='none'">
                     <div>
                         <h4>Mateo Rincón</h4>
                         <a href="https://instagram.com" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i> @mateo_rc</a>
@@ -389,7 +417,7 @@
                 </div>
                 
                 <div class="form-buttons">
-                    <button type="button" class="btn-whatsapp-send" onclick="enviarWhatsApp()">
+                    <button type="button" class="btn-whatsapp-send" onclick="enviarWhatsAppForm()">
                         <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
                     </button>
                     <button type="submit" class="btn-email-send">
