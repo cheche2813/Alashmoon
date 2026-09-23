@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alashmoon S.A.S. | Arte, Emoción y Tecnología</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+
+    <!-- PRECARGADOR CON ANIMACIÓN DE TRANSFORMACIÓN (JS) -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-icon-container">
+                <i class="fa-solid fa-moon floating-icon"></i>
+            </div>
+            <h2>Alashmoon S.A.S.</h2>
+            <p id="loader-text">Transformando sentimientos en arte digital...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR CON LOGO DE IMAGEN -->
+    <header class="navbar">
+        <div class="logo">
+            <!-- Espacio para la imagen del logo -->
+            <img src="img/logo.png" alt="Logo Alashmoon" class="navbar-logo-img" onerror="this.style.display='none'">
+            <span>ALASHMOON</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#experiencias">Experiencias</a></li>
+                <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN INICIO (HERO) -->
+    <section id="inicio" class="hero">
+        <div class="hero-glow-bg"></div>
+        <div class="hero-content">
+            <img src="img/logo1.jpg" alt="logo empresarial" class="img-fluid">
+            <h1>Inmortaliza tus momentos con arte y tecnología</h1>
+            <div class="hero-buttons">
+                <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+                <a href="#contacto" class="btn-secondary">Cotizar Pedido</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CATÁLOGO DE PRODUCTOS -->
+    <section id="catalogo" class="catalog">
+        <h2 class="section-title">Nuestros Productos y Servicios</h2>
+        <p class="section-subtitle">Elige el detalle perfecto para esa persona especial</p>
+
+        <!-- CATEGORÍA: RAMOS DE FLORES ETERNAS -->
+        <div class="category-block">
+            <div class="category-header">
+                <h3 class="category-title"><i class="fa-solid fa-rose"></i> Ramos de Flores Eternas (Fomi)</h3>
+                <p class="category-sub">Hechos a mano, duraderos y con acabados profesionales</p>
+            </div>
+            <div class="grid-productos">
+                <!-- Rosa Individual -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-rose img-placeholder"></i>
+                        <img src="img/ramo1.jpg" alt="Rosa Eterna Individual" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Rosa Eterna Individual</h3>
+                        <p>Una rosa en fomi con acabado premium, ideal para un detalle simple pero inolvidable.</p>
+                        <span class="price">$12.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Rosa Eterna Individual')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Girasol -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-sun img-placeholder"></i>
+                        <img src="img/ramo1.jpg" alt="Girasol Eterno" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Girasol Eterno</h3>
+                        <p>El toque de alegría y energía perfecto para alegrarle el día a alguien especial.</p>
+                        <span class="price">$15.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Girasol Eterno')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ramo de 10 Rosas -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-rose img-placeholder"></i>
+                        <img src="img/ramo1.jpg" alt="Ramo de 10 Rosas Eternas" onerror="this.style.display='none'">
+                        <span class="badge">Más Vendido</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Ramo de 10 Rosas Eternas</h3>
+                        <p>Diez rosas en fomi que nunca se marchitan. Elige tus colores favoritos.</p>
+                        <span class="price">$45.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Ramo de 10 Rosas Eternas')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ramo de 20 Rosas -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-rose img-placeholder"></i>
+                        <img src="img/ramo1.jpg" alt="Ramo de 20 Rosas Eternas" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Ramo de 20 Rosas Eternas</h3>
+                        <p>Doble impacto para ocasiones grandes: aniversarios, propuestas y más.</p>
+                        <span class="price">$78.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Ramo de 20 Rosas Eternas')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ramo Mixto -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-rose img-placeholder"></i>
+                        <img src="img/ramo1.jpg" alt="Ramo Mixto de Rosas y Girasol" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Ramo Mixto (Rosas + Girasol)</h3>
+                        <p>La combinación de elegancia y energía en un solo detalle. Tú eliges la mezcla.</p>
+                        <span class="price">$35.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Ramo Mixto (Rosas + Girasol)')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORÍA: CARTELERAS PERSONALIZADAS -->
+        <div class="category-block">
+            <div class="category-header">
+                <h3 class="category-title"><i class="fa-solid fa-pen-ruler"></i> Carteleras Personalizadas</h3>
+                <p class="category-sub">Diseños exclusivos para cumpleaños, aniversarios y fechas especiales</p>
+            </div>
+            <div class="grid-productos">
+                <!-- Cuarto de Cartulina -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-pen-ruler img-placeholder"></i>
+                        <img src="img/cartelera1.jpg" alt="Cartelera un Cuarto de Cartulina" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Cartelera Cuarto de Cartulina</h3>
+                        <p>Formato compacto, perfecta para detalles pequeños y sorpresas rápidas.</p>
+                        <span class="price">$15.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Cartelera Cuarto de Cartulina')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Medio Pliego -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-pen-ruler img-placeholder"></i>
+                        <img src="img/cartelera1.jpg" alt="Cartelera Medio Pliego" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Cartelera Medio Pliego</h3>
+                        <p>El tamaño ideal para declaraciones y mensajes con más protagonismo.</p>
+                        <span class="price">$28.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Cartelera Medio Pliego')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pliego Completo -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-pen-ruler img-placeholder"></i>
+                        <img src="img/cartelera1.jpg" alt="Cartelera Pliego Completo" onerror="this.style.display='none'">
+                        <span class="badge">Premium</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Cartelera Pliego Completo</h3>
+                        <p>Impacto máximo. Elige combinaciones de colores y decoración a tu gusto.</p>
+                        <span class="price">$45.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Cartelera Pliego Completo')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORÍA: CARTAS Y POEMAS A MEDIDA -->
+        <div class="category-block">
+            <div class="category-header">
+                <h3 class="category-title"><i class="fa-solid fa-feather-pointed"></i> Cartas y Poemas a Medida</h3>
+                <p class="category-sub">Redacción profesional y caligrafía impecable para tu mensaje</p>
+            </div>
+            <div class="grid-productos">
+                <!-- Poema Corto -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-feather-pointed img-placeholder"></i>
+                        <img src="img/carta1.jpg" alt="Poema Corto Personalizado" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Poema Corto</h3>
+                        <p>Versos breves y directos para transmitir un sentimiento en pocas palabras.</p>
+                        <span class="price">$10.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Poema Corto')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Poema Largo -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-feather-pointed img-placeholder"></i>
+                        <img src="img/carta1.jpg" alt="Poema Largo Personalizado" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Poema Largo</h3>
+                        <p>Composiciones extensas con licencia poética y detalles únicos de tu historia.</p>
+                        <span class="price">$18.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Poema Largo')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carta Romántica -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-heart img-placeholder"></i>
+                        <img src="img/carta1.jpg" alt="Carta Romántica a Medida" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Carta Romántica</h3>
+                        <p>Expresa amor, admiración o gratitud con una carta redactada desde el corazón.</p>
+                        <span class="price">$15.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Carta Romántica')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carta de Cumpleaños -->
+                <div class="card-producto">
+                    <div class="img-container">
+                        <i class="fa-solid fa-cake-candles img-placeholder"></i>
+                        <img src="img/carta1.jpg" alt="Carta de Cumpleaños" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Carta de Cumpleaños</h3>
+                        <p>El mensaje perfecto para celebrar y emocionar en esa fecha especial.</p>
+                        <span class="price">$15.000 COP</span>
+                        <button class="btn-order" onclick="pedirProducto('Carta de Cumpleaños')">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS (MISIÓN Y VISIÓN) -->
+    <section id="nosotros" class="about">
+        <h2 class="section-title">¿Quiénes Somos?</h2>
+        <p class="section-subtitle">Conoce la esencia y filosofía de Alashmoon S.A.S.</p>
+        
+        <div class="about-container">
+            <div class="about-text">
+                <p>Somos un equipo de emprendedores conformado por tres Jovenes. Unimos nuestra pasión por la tecnología, el diseño estético y el detalle artesanal para ofrecerte una experiencia de compra elegante, rápida y segura.</p>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mv-box">
+                    <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h4>Misión</h4>
+                    <p>Transformar sentimientos y momentos especiales en recuerdos tangibles e inolvidables, mediante la elaboración artesanal de ramos de flores eternas en fomi, carteleras creativas, cartas y poemas personalizados. Combinamos la calidez del diseño hecho a mano con la innovación digital y la automatización de una plataforma web eficiente.</p>
+                </div>
+                <div class="mv-box">
+                    <div class="mv-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h4>Visión</h4>
+                    <p>Para el año 2028, posicionarnos como la empresa líder en e-commerce de detalles personalizados y manualidades finas en la región de Santander, reconocidos por la excelencia de nuestros productos artesanales, la originalidad de nuestra marca y la constante innovación tecnológica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EXPERIENCIAS DE USUARIOS -->
+    <section id="experiencias" class="testimonials">
+        <h2 class="section-title">Experiencias Verificables</h2>
+        <p class="section-subtitle">Lo que opinan nuestros clientes reales</p>
+        
+        <div class="grid-reviews">
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="img/ramo1.jpg" alt="Producto entregado" class="review-img-mini">
+                    <div>
+                        <h4>Camila Andrés</h4>
+                        <a href="https://instagram.com" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i> @camila_detalles</a>
+                    </div>
+                </div>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"El ramo de flores eternas llegó exactamente como lo pedí en los colores morado y azul. ¡Super recomendado, la atención por WhatsApp fue inmediata!"</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="img/cartelera1.jpg" alt="Producto entregado" class="review-img-mini">
+                    <div>
+                        <h4>Mateo Rincón</h4>
+                        <a href="https://instagram.com" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i> @mateo_rc</a>
+                    </div>
+                </div>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"La cartelera superó mis expectativas. Se nota el profesionalismo y el amor que le ponen a cada emprendimiento estudiantil. ¡Excelente servicio!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO / FORMULARIO -->
+    <section id="contacto" class="contact">
+        <h2 class="section-title">Contáctanos y Realiza tu Pedido</h2>
+        <p class="section-subtitle">Elige tu método preferido para solicitar tu compra</p>
+
+        <div class="contact-container">
+            <form id="orderForm" class="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Tu Nombre:</label>
+                    <input type="text" id="nombre" required placeholder="Ej. Carlos Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="productoSelect">Servicio o Producto:</label>
+                    <select id="productoSelect">
+                        <optgroup label="Ramos de Flores Eternas">
+                            <option value="Rosa Eterna Individual">Rosa Eterna Individual</option>
+                            <option value="Girasol Eterno">Girasol Eterno</option>
+                            <option value="Ramo de 10 Rosas Eternas">Ramo de 10 Rosas Eternas</option>
+                            <option value="Ramo de 20 Rosas Eternas">Ramo de 20 Rosas Eternas</option>
+                            <option value="Ramo Mixto (Rosas + Girasol)">Ramo Mixto (Rosas + Girasol)</option>
+                        </optgroup>
+                        <optgroup label="Carteleras Personalizadas">
+                            <option value="Cartelera Cuarto de Cartulina">Cartelera Cuarto de Cartulina</option>
+                            <option value="Cartelera Medio Pliego">Cartelera Medio Pliego</option>
+                            <option value="Cartelera Pliego Completo">Cartelera Pliego Completo</option>
+                        </optgroup>
+                        <optgroup label="Cartas y Poemas a Medida">
+                            <option value="Poema Corto">Poema Corto</option>
+                            <option value="Poema Largo">Poema Largo</option>
+                            <option value="Carta Romántica">Carta Romántica</option>
+                            <option value="Carta de Cumpleaños">Carta de Cumpleaños</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Tu Correo Electrónico:</label>
+                    <input type="email" id="correo" required placeholder="tucorreo@dominio.com">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Detalles o Especificaciones del Pedido:</label>
+                    <textarea id="mensaje" rows="4" required placeholder="Colores deseados, dedicatoria, fecha de entrega..."></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="button" class="btn-whatsapp-send" onclick="enviarWhatsApp()">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
+                    </button>
+                    <button type="submit" class="btn-email-send">
+                        <i class="fa-solid fa-envelope"></i> Enviar por Correo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Alashmoon S.A.S. • Emprendimiento ADSO SENA CSET. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
