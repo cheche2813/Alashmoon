@@ -132,53 +132,55 @@
                 <p class="category-sub">Flores que nunca se marchitan, igual que todo lo que sientes. Tú pones el sentimiento, nosotros la belleza.</p>
             </div>
 
-            <!-- CARRUSEL DE ARRASTRE: RAMOS DE ROSAS ETERNAS -->
-            <div class="contenedor-rosas">
-                <div id="actions-rosas">
-                    <a id="arrowrigth-rosa" class="arrowrosa-enlace">
-                        <i class="fa-solid fa-chevron-right arrowrosa arrowrosa-derecha"></i>
-                    </a>
-                    <a id="arrowleft-rosa" class="arrowrosa-enlace">
-                        <i class="fa-solid fa-chevron-left arrowrosa arrowrosa-izquierda"></i>
-                    </a>
+            <div class="rosas-layout">
+                <!-- CARRUSEL DE ARRASTRE: RAMOS DE ROSAS ETERNAS -->
+                <div class="contenedor-rosas">
+                    <div id="actions-rosas">
+                        <a id="arrowrigth-rosa" class="arrowrosa-enlace">
+                            <i class="fa-solid fa-chevron-right arrowrosa arrowrosa-derecha"></i>
+                        </a>
+                        <a id="arrowleft-rosa" class="arrowrosa-enlace">
+                            <i class="fa-solid fa-chevron-left arrowrosa arrowrosa-izquierda"></i>
+                        </a>
+                    </div>
+                    <div id="items-rosas">
+                        <img draggable="false" class="img-rosa" src="img/rosas.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/rosass.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/rosasas.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/rosasss.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/roshas.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/roshis.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/roshitas.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/rositas.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/roshitashi.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/ro.jpg" alt="Ramo de rosas eternas">
+                        <img draggable="false" class="img-rosa" src="img/ros.jpg" alt="Ramo de rosas eternas">
+                    </div>
                 </div>
-                <div id="items-rosas">
-                    <img draggable="false" class="img-rosa" src="img/rosas.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/rosass.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/rosasas.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/rosasss.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/roshas.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/roshis.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/roshitas.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/rositas.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/roshitashi.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/ro.jpg" alt="Ramo de rosas eternas">
-                    <img draggable="false" class="img-rosa" src="img/ros.jpg" alt="Ramo de rosas eternas">
-                </div>
-            </div>
 
-            <!-- FORMULARIO DE PEDIDO: ROSAS ETERNAS -->
-            <div class="pedido-form">
-                <h4><i class="fa-solid fa-rose"></i> Arma tu pedido de rosas eternas</h4>
-                <p class="pedido-sub">Cuéntanos cómo lo quieres y nosotros lo hacemos realidad.</p>
-                <form id="formRosas">
-                    <div class="form-group">
-                        <label for="rosasCantidad">¿Cuántas rosas quieres?</label>
-                        <input type="number" id="rosasCantidad" min="1" value="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="rosasColores">Colores deseados</label>
-                        <input type="text" id="rosasColores" placeholder="Ej. Rojo, morado y blanco" required>
-                    </div>
-                    <div class="form-buttons">
-                        <button type="button" class="btn-buy-now" onclick="comprarRosasAhora()">
-                            <i class="fa-solid fa-bolt"></i> Comprar ahora
-                        </button>
-                        <button type="button" class="btn-add-cart" onclick="agregarRosasCarrito()">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
-                    </div>
-                </form>
+                <!-- FORMULARIO DE PEDIDO: ROSAS ETERNAS -->
+                <div class="pedido-form">
+                    <h4><i class="fa-solid fa-rose"></i> Arma tu pedido de rosas eternas</h4>
+                    <p class="pedido-sub">Cuéntanos cómo lo quieres y nosotros lo hacemos realidad.</p>
+                    <form id="formRosas">
+                        <div class="form-group">
+                            <label for="rosasCantidad">¿Cuántas rosas quieres?</label>
+                            <input type="number" id="rosasCantidad" min="1" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rosasColores">Colores deseados</label>
+                            <input type="text" id="rosasColores" placeholder="Ej. Rojo, morado y blanco" required>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="btn-buy-now" onclick="comprarRosasAhora()">
+                                <i class="fa-solid fa-bolt"></i> Comprar ahora
+                            </button>
+                            <button type="button" class="btn-add-cart" onclick="agregarRosasCarrito()">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -189,8 +191,9 @@
                 <p class="category-sub">Diseños que convierten tu mensaje en el momento más emocionante del día de alguien.</p>
             </div>
 
-            <!-- CARRUSEL 3D ROTATIVO: CARTELERAS PERSONALIZADAS -->
-            <div class="contenedor-cartelera-3d">
+            <div class="cartelera-layout">
+                <!-- CARRUSEL 3D ROTATIVO: CARTELERAS PERSONALIZADAS -->
+                <div class="contenedor-cartelera-3d">
                 <div class="caja-3d" id="caja-3d">
                     <div class="elemento-3d">
                         <div class="imagenes-3d">
@@ -249,15 +252,9 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
 
-            <!-- FORMULARIO DE PEDIDO: CARTELERAS PERSONALIZADAS -->
-            <div class="pedido-form">
+                <!-- FORMULARIO DE PEDIDO: CARTELERAS PERSONALIZADAS -->
+                <div class="pedido-form">
                 <h4><i class="fa-solid fa-pen-ruler"></i> Arma tu pedido de cartelera</h4>
                 <p class="pedido-sub">Escribe tu mensaje o déjanos crearlo por ti, y elige el formato ideal.</p>
                 <form id="formCartelera">
@@ -299,6 +296,7 @@
                     </div>
                 </form>
             </div>
+            </div>
         </div>
         <br>
         <br>
@@ -313,8 +311,9 @@
                 <p class="category-sub">Poemas de todo tamaño y todo tipo. Solo danos una base, tu imaginación y lo que quieres transmitir, y nosotros lo hacemos realidad.</p>
             </div>
 
-            <!-- CARRUSEL DE TARJETAS APILADAS: POEMAS -->
-            <div class="contenedor-poemas">
+            <div class="poemas-layout">
+                <!-- CARRUSEL DE TARJETAS APILADAS: POEMAS -->
+                <div class="contenedor-poemas">
                 <div class="card-poema principal-poema" id="poema-card-1" ontouchstart="poemaOnTouchStart(event)" ontouchend="poemaOnTouchEnd(event)">
                     <div class="poema-card-image" style="background-color: rgb(71, 166, 185);">
                         <img src="https://s5-onboarding-digital-angular.vercel.app/assets/time_managment.svg" alt="Poema personalizado">
@@ -414,6 +413,7 @@
                         </button>
                     </div>
                 </form>
+            </div>
             </div>
         </div>
     </section>
