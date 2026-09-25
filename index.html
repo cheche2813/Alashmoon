@@ -36,9 +36,9 @@
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#materiales">Materiales</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#experiencias">Experiencias</a></li>
-                <li><a href="#contacto">Contacto</a></li>
                 <li>
                     <button class="cart-btn" onclick="toggleCartModal()">
                         <i class="fa-solid fa-cart-shopping"></i> 
@@ -72,15 +72,50 @@
         </div>
     </div>
 
+    <!-- MODAL: DATOS GLOBALES DEL PEDIDO -->
+    <div id="order-data-modal" class="cart-modal hidden">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fa-solid fa-clipboard-list"></i> Confirma tu Pedido</h3>
+                <button class="close-cart" onclick="cerrarModalDatosGlobales()">&times;</button>
+            </div>
+            <div id="order-summary" class="order-summary"></div>
+            <form id="orderDataForm" class="order-data-form">
+                <div class="form-group">
+                    <label for="globalFecha">Fecha posible de entrega</label>
+                    <input type="date" id="globalFecha">
+                </div>
+                <div class="form-group">
+                    <label for="globalSolicitante">Nombre del solicitante (quién realiza el pedido)</label>
+                    <input type="text" id="globalSolicitante" placeholder="Ej. Carlos Pérez">
+                </div>
+                <label class="check-cart">
+                    <input type="checkbox" id="globalDedicatoria" onchange="alternarDestinatario()">
+                    Mi pedido incluye una dedicatoria o tarjetica personalizada
+                </label>
+                <div class="form-group" id="globalDestinatarioWrap" style="display:none">
+                    <label for="globalDestinatario">Nombre del destinatario (a quién va dirigido)</label>
+                    <input type="text" id="globalDestinatario" placeholder="Ej. Valentina Gómez">
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn-whatsapp-send" onclick="enviarPedidoWhatsApp()">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- SECCIÓN INICIO (HERO) -->
     <section id="inicio" class="hero">
         <div class="hero-glow-bg"></div>
         <div class="hero-content">
             <img src="img/logo1.jpg" alt="logo empresarial" class="img-fluid" onerror="this.style.display='none'">
-            <h1>Inmortaliza tus momentos con arte y tecnología</h1>
+            <h1>Regala sentimientos que nunca se marchitan</h1>
+            <p>En Alashmoon convertimos tus emociones en demostraciones. Porque hay cosas que se sienten más de lo que se dicen, y nosotros te ayudamos a expresarlas.</p>
             <div class="hero-buttons">
                 <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
-                <a href="#contacto" class="btn-secondary">Cotizar Pedido</a>
+                <a href="#catalogo" class="btn-secondary">Cotizar Pedido</a>
             </div>
         </div>
     </section>
@@ -88,95 +123,62 @@
     <!-- SECCIÓN CATÁLOGO DE PRODUCTOS -->
     <section id="catalogo" class="catalog">
         <h2 class="section-title">Nuestros Productos y Servicios</h2>
-        <p class="section-subtitle">Elige el detalle perfecto para esa persona especial</p>
+        <p class="section-subtitle">Detalles que hablan por ti cuando las palabras no alcanzan</p>
 
-        <!-- CATEGORÍA: RAMOS DE FLORES ETERNAS -->
+        <!-- CATEGORÍA: RAMOS DE ROSAS ETERNAS -->
         <div class="category-block">
             <div class="category-header">
-                <h3 class="category-title"><i class="fa-solid fa-rose"></i> Ramos de Flores Eternas (Fomi)</h3>
-                <p class="category-sub">Hechos a mano, duraderos y con acabados profesionales</p>
+                <h3 class="category-title"><i class="fa-solid fa-rose"></i> Ramos de Rosas Eternas (Fomi)</h3>
+                <p class="category-sub">Flores que nunca se marchitan, igual que todo lo que sientes. Tú pones el sentimiento, nosotros la belleza.</p>
             </div>
-            <div class="grid-productos">
-                <!-- Rosa Individual -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-rose img-placeholder"></i>
-                        <img src="img/ramo1.jpg" alt="Rosa Eterna Individual" onerror="this.style.display='none'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Rosa Eterna Individual</h3>
-                        <p>Una rosa en fomi con acabado premium, ideal para un detalle simple pero inolvidable.</p>
-                        <span class="price" data-price="12000">$12.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Rosa Eterna Individual', 12000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Girasol -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-sun img-placeholder"></i>
-                        <img src="img/ramo1.jpg" alt="Girasol Eterno" onerror="this.style.display='none'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Girasol Eterno</h3>
-                        <p>El toque de alegría y energía perfecto para alegrarle el día a alguien especial.</p>
-                        <span class="price" data-price="15000">$15.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Girasol Eterno', 15000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
+            <!-- CARRUSEL DE ARRASTRE: RAMOS DE ROSAS ETERNAS -->
+            <div class="contenedor-rosas">
+                <div id="actions-rosas">
+                    <a id="arrowrigth-rosa" class="arrowrosa-enlace">
+                        <i class="fa-solid fa-chevron-right arrowrosa arrowrosa-derecha"></i>
+                    </a>
+                    <a id="arrowleft-rosa" class="arrowrosa-enlace">
+                        <i class="fa-solid fa-chevron-left arrowrosa arrowrosa-izquierda"></i>
+                    </a>
                 </div>
+                <div id="items-rosas">
+                    <img draggable="false" class="img-rosa" src="img/rosas.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/rosass.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/rosasas.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/rosasss.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/roshas.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/roshis.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/roshitas.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/rositas.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/roshitashi.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/ro.jpg" alt="Ramo de rosas eternas">
+                    <img draggable="false" class="img-rosa" src="img/ros.jpg" alt="Ramo de rosas eternas">
+                </div>
+            </div>
 
-                <!-- Ramo de 10 Rosas -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-rose img-placeholder"></i>
-                        <img src="img/ramo1.jpg" alt="Ramo de 10 Rosas Eternas" onerror="this.style.display='none'">
-                        <span class="badge">Más Vendido</span>
+            <!-- FORMULARIO DE PEDIDO: ROSAS ETERNAS -->
+            <div class="pedido-form">
+                <h4><i class="fa-solid fa-rose"></i> Arma tu pedido de rosas eternas</h4>
+                <p class="pedido-sub">Cuéntanos cómo lo quieres y nosotros lo hacemos realidad.</p>
+                <form id="formRosas">
+                    <div class="form-group">
+                        <label for="rosasCantidad">¿Cuántas rosas quieres?</label>
+                        <input type="number" id="rosasCantidad" min="1" value="1" required>
                     </div>
-                    <div class="card-body">
-                        <h3>Ramo de 10 Rosas Eternas</h3>
-                        <p>Diez rosas en fomi que nunca se marchitan. Elige tus colores favoritos.</p>
-                        <span class="price" data-price="45000">$45.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Ramo de 10 Rosas Eternas', 45000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+                    <div class="form-group">
+                        <label for="rosasColores">Colores deseados</label>
+                        <input type="text" id="rosasColores" placeholder="Ej. Rojo, morado y blanco" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-buy-now" onclick="comprarRosasAhora()">
+                            <i class="fa-solid fa-bolt"></i> Comprar ahora
+                        </button>
+                        <button type="button" class="btn-add-cart" onclick="agregarRosasCarrito()">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                         </button>
                     </div>
-                </div>
-
-                <!-- Ramo de 20 Rosas -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-rose img-placeholder"></i>
-                        <img src="img/ramo1.jpg" alt="Ramo de 20 Rosas Eternas" onerror="this.style.display='none'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Ramo de 20 Rosas Eternas</h3>
-                        <p>Doble impacto para ocasiones grandes: aniversarios, propuestas y más.</p>
-                        <span class="price" data-price="78000">$78.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Ramo de 20 Rosas Eternas', 78000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Ramo Mixto -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-rose img-placeholder"></i>
-                        <img src="img/ramo1.jpg" alt="Ramo Mixto de Rosas y Girasol" onerror="this.style.display='none'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Ramo Mixto (Rosas + Girasol)</h3>
-                        <p>La combinación de elegancia y energía en un solo detalle. Tú eliges la mezcla.</p>
-                        <span class="price" data-price="35000">$35.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Ramo Mixto (Rosas + Girasol)', 35000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -184,130 +186,278 @@
         <div class="category-block">
             <div class="category-header">
                 <h3 class="category-title"><i class="fa-solid fa-pen-ruler"></i> Carteleras Personalizadas</h3>
-                <p class="category-sub">Diseños exclusivos para cumpleaños, aniversarios y fechas especiales</p>
+                <p class="category-sub">Diseños que convierten tu mensaje en el momento más emocionante del día de alguien.</p>
             </div>
-            <div class="grid-productos">
-                <!-- Cuarto de Cartulina -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-pen-ruler img-placeholder"></i>
-                        <img src="img/cartelera1.jpg" alt="Cartelera un Cuarto de Cartulina" onerror="this.style.display='none'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Cartelera Cuarto de Cartulina</h3>
-                        <p>Formato compacto, perfecta para detalles pequeños y sorpresas rápidas.</p>
-                        <span class="price" data-price="15000">$15.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Cartelera Cuarto de Cartulina', 15000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Medio Pliego -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-pen-ruler img-placeholder"></i>
-                        <img src="img/cartelera1.jpg" alt="Cartelera Medio Pliego" onerror="this.style.display='none'">
+            <!-- CARRUSEL 3D ROTATIVO: CARTELERAS PERSONALIZADAS -->
+            <div class="contenedor-cartelera-3d">
+                <div class="caja-3d" id="caja-3d">
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
+                            <img src="img/carte.jpg" alt="Cartelera personalizada">
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3>Cartelera Medio Pliego</h3>
-                        <p>El tamaño ideal para declaraciones y mensajes con más protagonismo.</p>
-                        <span class="price" data-price="28000">$28.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Cartelera Medio Pliego', 28000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/carte.jpg" alt="Cartelera personalizada">
+                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
+                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
+                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
+                            <img src="img/carte.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/carte.jpg" alt="Cartelera personalizada">
+                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
+                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="elemento-3d">
+                        <div class="imagenes-3d">
+                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
+                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
+                        </div>
+                    </div>
+                    <div class="piso-3d flex-3d">
+                        <div class="titulo-3d flex-3d">
+                            <p>Carteleras</p>
+                            <p>Personalizadas</p>
+<p>Hechas con Amor</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
 
-                <!-- Pliego Completo -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-pen-ruler img-placeholder"></i>
-                        <img src="img/cartelera1.jpg" alt="Cartelera Pliego Completo" onerror="this.style.display='none'">
-                        <span class="badge">Premium</span>
+            <!-- FORMULARIO DE PEDIDO: CARTELERAS PERSONALIZADAS -->
+            <div class="pedido-form">
+                <h4><i class="fa-solid fa-pen-ruler"></i> Arma tu pedido de cartelera</h4>
+                <p class="pedido-sub">Escribe tu mensaje o déjanos crearlo por ti, y elige el formato ideal.</p>
+                <form id="formCartelera">
+                    <div class="form-group">
+                        <label>Tamaño de la cartelera</label>
+                        <div class="radio-group">
+                            <label class="radio-option"><input type="radio" name="carteleraTamano" value="Pliego completo" required> Pliego</label>
+                            <label class="radio-option"><input type="radio" name="carteleraTamano" value="Medio pliego" required> Medio pliego</label>
+                            <label class="radio-option"><input type="radio" name="carteleraTamano" value="Cuarto de pliego" required> Cuarto de pliego</label>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3>Cartelera Pliego Completo</h3>
-                        <p>Impacto máximo. Elige combinaciones de colores y decoración a tu gusto.</p>
-                        <span class="price" data-price="45000">$45.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Cartelera Pliego Completo', 45000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+                    <div class="form-group">
+                        <label>Material de la cartelera</label>
+                        <div class="radio-group">
+                            <label class="radio-option"><input type="radio" name="carteleraMaterial" value="Cartón paja" required> Cartón paja</label>
+                            <label class="radio-option"><input type="radio" name="carteleraMaterial" value="Cartulina tradicional" required> Cartulina tradicional</label>
+                            <label class="radio-option"><input type="radio" name="carteleraMaterial" value="Papel de azúcar" required> Papel de azúcar</label>
+                        </div>
+                    </div>
+                    <label class="check-cart">
+                        <input type="checkbox" id="carteleraCrearMensaje">
+                        Quiero que ustedes creen el mensaje por mí
+                    </label>
+                    <div class="form-group">
+                        <label for="carteleraMensaje">Escribe el mensaje de tu cartelera</label>
+                        <textarea id="carteleraMensaje" rows="3" placeholder="Escribe aquí el mensaje..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="carteleraFinalidad">Si nosotros lo creamos: ¿cuál es la finalidad del mensaje?</label>
+                        <input type="text" id="carteleraFinalidad" placeholder="Ej. Pedir perdón, cumpleaños, aniversario...">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-buy-now" onclick="comprarCarteleraAhora()">
+                            <i class="fa-solid fa-bolt"></i> Comprar ahora
+                        </button>
+                        <button type="button" class="btn-add-cart" onclick="agregarCarteleraCarrito()">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <!-- CATEGORÍA: CARTAS Y POEMAS A MEDIDA -->
         <div class="category-block">
             <div class="category-header">
                 <h3 class="category-title"><i class="fa-solid fa-feather-pointed"></i> Cartas y Poemas a Medida</h3>
-                <p class="category-sub">Redacción profesional y caligrafía impecable para tu mensaje</p>
+                <p class="category-sub">Poemas de todo tamaño y todo tipo. Solo danos una base, tu imaginación y lo que quieres transmitir, y nosotros lo hacemos realidad.</p>
             </div>
-            <div class="grid-productos">
-                <!-- Poema Corto -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-feather-pointed img-placeholder"></i>
-                        <img src="img/carta1.jpg" alt="Poema Corto Personalizado" onerror="this.style.display='none'">
+
+            <!-- CARRUSEL DE TARJETAS APILADAS: POEMAS -->
+            <div class="contenedor-poemas">
+                <div class="card-poema principal-poema" id="poema-card-1" ontouchstart="poemaOnTouchStart(event)" ontouchend="poemaOnTouchEnd(event)">
+                    <div class="poema-card-image" style="background-color: rgb(71, 166, 185);">
+                        <img src="https://s5-onboarding-digital-angular.vercel.app/assets/time_managment.svg" alt="Poema personalizado">
                     </div>
-                    <div class="card-body">
-                        <h3>Poema Corto</h3>
-                        <p>Versos breves y directos para transmitir un sentimiento en pocas palabras.</p>
-                        <span class="price" data-price="10000">$10.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Poema Corto', 10000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
+                    <div class="poema-card-content">
+                        <h3>Poemas de todo tamaño y tipo</h3>
+                        <p>Poemas de todo tamaño y todo tipo. Solo danos una base, tu imaginación y lo que quieres transmitir, y nosotros lo hacemos realidad.</p>
+                        <div class="poema-card-navigation">
+                            <div>
+                                <span class="poema-dot poema-active-dot"></span>
+                                <span class="poema-dot"></span>
+                                <span class="poema-dot"></span>
+                            </div>
+                            <div class="poema-buttons">
+                                <button onclick="nextPoemaCard()" class="poema-next-button">&#8594;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Poema Largo -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-feather-pointed img-placeholder"></i>
-                        <img src="img/carta1.jpg" alt="Poema Largo Personalizado" onerror="this.style.display='none'">
+                <div class="card-poema siguiente-poema" id="poema-card-2" ontouchstart="poemaOnTouchStart(event)" ontouchend="poemaOnTouchEnd(event)">
+                    <div class="poema-card-image" style="background-color: rgb(211, 212, 217);">
+                        <img src="https://s5-onboarding-digital-angular.vercel.app/assets/programming.svg" alt="Poema personalizado">
                     </div>
-                    <div class="card-body">
-                        <h3>Poema Largo</h3>
-                        <p>Composiciones extensas con licencia poética y detalles únicos de tu historia.</p>
-                        <span class="price" data-price="18000">$18.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Poema Largo', 18000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Carta Romántica -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-heart img-placeholder"></i>
-                        <img src="img/carta1.jpg" alt="Carta Romántica a Medida" onerror="this.style.display='none'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Carta Romántica</h3>
-                        <p>Expresa amor, admiración o gratitud con una carta redactada desde el corazón.</p>
-                        <span class="price" data-price="15000">$15.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Carta Romántica', 15000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
+                    <div class="poema-card-content">
+                        <h3>¿Corto, largo o sorpresa?</h3>
+                        <p>Cuéntanos qué quieres transmitir y con quién irá: nosotros elegimos las palabras precisas para que lleguen directo al corazón.</p>
+                        <div class="poema-card-navigation">
+                            <div>
+                                <span class="poema-dot"></span>
+                                <span class="poema-dot"></span>
+                                <span class="poema-dot"></span>
+                            </div>
+                            <div class="poema-buttons">
+                                <button onclick="previousPoemaCard()" class="poema-previous-button">&#8592;</button>
+                                <button onclick="nextPoemaCard()" class="poema-next-button">&#8594;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Carta de Cumpleaños -->
-                <div class="card-producto">
-                    <div class="img-container">
-                        <i class="fa-solid fa-cake-candles img-placeholder"></i>
-                        <img src="img/carta1.jpg" alt="Carta de Cumpleaños" onerror="this.style.display='none'">
+                <div class="card-poema siguiente2-poema" id="poema-card-3" ontouchstart="poemaOnTouchStart(event)" ontouchend="poemaOnTouchEnd(event)">
+                    <div class="poema-card-image" style="background-color: rgb(255, 209, 103);">
+                        <img src="https://s5-onboarding-digital-angular.vercel.app/assets/meditation.svg" alt="Poema personalizado">
                     </div>
-                    <div class="card-body">
-                        <h3>Carta de Cumpleaños</h3>
-                        <p>El mensaje perfecto para celebrar y emocionar en esa fecha especial.</p>
-                        <span class="price" data-price="15000">$15.000 COP</span>
-                        <button class="btn-add-cart" onclick="agregarAlCarrito('Carta de Cumpleaños', 15000)">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
-                        </button>
+                    <div class="poema-card-content">
+                        <h3>Escritos con el corazón</h3>
+                        <p>Cartas y versos con caligrafía impecable y redacción profesional, para que tu mensaje se sienta tan especial como quien lo recibe.</p>
+                        <div class="poema-card-navigation">
+                            <div>
+                                <span class="poema-dot"></span>
+                                <span class="poema-dot"></span>
+                                <span class="poema-dot"></span>
+                            </div>
+                            <div class="poema-buttons">
+                                <button onclick="previousPoemaCard()" class="poema-previous-button">&#8592;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div id="div-transparent-previous-poema" class="poema-ocultar" onclick="previousPoemaCard()"></div>
+                <div id="div-transparent-next-poema" class="" onclick="nextPoemaCard()"></div>
+            </div>
+
+            <!-- FORMULARIO DE PEDIDO: POEMAS -->
+            <div class="pedido-form">
+                <h4><i class="fa-solid fa-feather-pointed"></i> Arma tu pedido de poema</h4>
+                <p class="pedido-sub">Cuéntanos qué quieres transmitir y nosotros lo escribimos con el corazón.</p>
+                <form id="formPoema">
+                    <div class="form-group">
+                        <label>¿Quién escribe el poema?</label>
+                        <div class="radio-group">
+                            <label class="radio-option"><input type="radio" name="poemaAutor" value="Yo lo escribiré" required> Yo lo escribiré</label>
+                            <label class="radio-option"><input type="radio" name="poemaAutor" value="Quiero que ustedes lo escriban" required> Quiero que ustedes lo escriban</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="poemaTemas">¿Qué temas quieres transmitir?</label>
+                        <textarea id="poemaTemas" rows="3" placeholder="Ej. Amor, gratitud, despedida, amistad... y para quién es" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="poemaEstrofas">¿Qué tan largo lo quieres?</label>
+                        <select id="poemaEstrofas">
+                            <option value="2 estrofas">Corto (2 estrofas)</option>
+                            <option value="3 estrofas">Mediano (3 estrofas)</option>
+                            <option value="6 estrofas">Largo (6 estrofas)</option>
+                            <option value="8 estrofas o más">Extra largo (8 estrofas o más)</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-buy-now" onclick="comprarPoemaAhora()">
+                            <i class="fa-solid fa-bolt"></i> Comprar ahora
+                        </button>
+                        <button type="button" class="btn-add-cart" onclick="agregarPoemaCarrito()">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN MATERIALES -->
+    <section id="materiales" class="materials">
+        <h2 class="section-title">Los Materiales de Nuestros Detalles</h2>
+        <p class="section-subtitle">Cada elemento es elegido y cuidado a mano, porque tu regalo merece ser tan especial como tu sentimiento</p>
+
+        <div class="materials-container">
+            <div class="material-group">
+                <div class="material-group-header">
+                    <i class="fa-solid fa-rose"></i>
+                    <h3>En nuestros ramos de flores</h3>
+                    <p>Materiales suaves, delicados y duraderos que dan vida a flores eternas que transmiten lo que sientes.</p>
+                </div>
+                <ul class="material-chips">
+                    <li><i class="fa-solid fa-scissors"></i> Cinta de tela</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> Palillos de pincho</li>
+                    <li><i class="fa-solid fa-star"></i> Mariposas</li>
+                    <li><i class="fa-solid fa-crown"></i> Coronas</li>
+                    <li><i class="fa-solid fa-scroll"></i> Papel coreano</li>
+                    <li><i class="fa-solid fa-box"></i> Bases con cartón</li>
+                </ul>
+            </div>
+
+            <div class="material-group">
+                <div class="material-group-header">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <h3>En nuestras carteleras</h3>
+                    <p>Superficies y papeles de buena calidad para mensajes que se sienten tan bien como se leen.</p>
+                </div>
+                <ul class="material-chips">
+                    <li><i class="fa-solid fa-layer-group"></i> Cartón paja</li>
+                    <li><i class="fa-solid fa-square"></i> Cartulina tradicional</li>
+                    <li class="material-chip-papel">
+                        <i class="fa-solid fa-sheet-plastic"></i> Papel de azúcar
+                        <span class="material-size-badges">
+                            <span>Pliego</span>
+                            <span>Medio pliego</span>
+                            <span>Cuarto de pliego</span>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -373,66 +523,20 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO / FORMULARIO -->
-    <section id="contacto" class="contact">
-        <h2 class="section-title">Contáctanos y Realiza tu Pedido</h2>
-        <p class="section-subtitle">Elige tu método preferido para solicitar tu compra</p>
-
-        <div class="contact-container">
-            <form id="orderForm" class="contact-form">
-                <div class="form-group">
-                    <label for="nombre">Tu Nombre:</label>
-                    <input type="text" id="nombre" required placeholder="Ej. Carlos Pérez">
-                </div>
-                <div class="form-group">
-                    <label for="productoSelect">Servicio o Producto:</label>
-                    <select id="productoSelect">
-                        <optgroup label="Ramos de Flores Eternas">
-                            <option value="Rosa Eterna Individual">Rosa Eterna Individual</option>
-                            <option value="Girasol Eterno">Girasol Eterno</option>
-                            <option value="Ramo de 10 Rosas Eternas">Ramo de 10 Rosas Eternas</option>
-                            <option value="Ramo de 20 Rosas Eternas">Ramo de 20 Rosas Eternas</option>
-                            <option value="Ramo Mixto (Rosas + Girasol)">Ramo Mixto (Rosas + Girasol)</option>
-                        </optgroup>
-                        <optgroup label="Carteleras Personalizadas">
-                            <option value="Cartelera Cuarto de Cartulina">Cartelera Cuarto de Cartulina</option>
-                            <option value="Cartelera Medio Pliego">Cartelera Medio Pliego</option>
-                            <option value="Cartelera Pliego Completo">Cartelera Pliego Completo</option>
-                        </optgroup>
-                        <optgroup label="Cartas y Poemas a Medida">
-                            <option value="Poema Corto">Poema Corto</option>
-                            <option value="Poema Largo">Poema Largo</option>
-                            <option value="Carta Romántica">Carta Romántica</option>
-                            <option value="Carta de Cumpleaños">Carta de Cumpleaños</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="correo">Tu Correo Electrónico:</label>
-                    <input type="email" id="correo" required placeholder="tucorreo@dominio.com">
-                </div>
-                <div class="form-group">
-                    <label for="mensaje">Detalles o Especificaciones del Pedido:</label>
-                    <textarea id="mensaje" rows="4" required placeholder="Colores deseados, dedicatoria, fecha de entrega..."></textarea>
-                </div>
-                
-                <div class="form-buttons">
-                    <button type="button" class="btn-whatsapp-send" onclick="enviarWhatsAppForm()">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
-                    </button>
-                    <button type="submit" class="btn-email-send">
-                        <i class="fa-solid fa-envelope"></i> Enviar por Correo
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-
     <!-- FOOTER -->
     <footer>
+        <ul class="redes">
+            <li class="titulo">Visita nuestras redes sociales</li>
+            <li><a target="_blank" href="https://wa.me/573160512872"><i class="fa-brands fa-whatsapp"></i></a></li>
+            <li><a target="_blank" href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a target="_blank" href="https://www.tiktok.com/"><i class="fa-brands fa-tiktok"></i></a></li>
+        </ul>
         <p>&copy; 2026 Alashmoon S.A.S. • Emprendimiento ADSO SENA CSET. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
