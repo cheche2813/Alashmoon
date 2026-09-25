@@ -471,3 +471,20 @@ function agregarPoemaCarrito() {
     const pedido = recolectarPoema();
     if (pedido) agregarPedidoCarrito(pedido.nombre, pedido.detalle);
 }
+
+// --- MODAL DE PROMOCIÓN DE BIENVENIDA ---
+function abrirPromoModal() {
+    document.getElementById('promo-modal').classList.remove('hidden');
+}
+
+function cerrarPromoModal() {
+    document.getElementById('promo-modal').classList.add('hidden');
+}
+
+document.getElementById('promo-modal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('promo-modal')) cerrarPromoModal();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(abrirPromoModal, 2800);
+});

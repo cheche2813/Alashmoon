@@ -105,6 +105,27 @@
         </div>
     </div>
 
+    <!-- MODAL DE PROMOCIÓN DE BIENVENIDA -->
+    <div id="promo-modal" class="cart-modal hidden">
+        <div class="cart-content promo-content">
+            <div class="cart-header">
+                <h3><i class="fa-solid fa-gift"></i> ¡Promoción Especial para Ti!</h3>
+                <button class="close-cart" onclick="cerrarPromoModal()">&times;</button>
+            </div>
+            <div class="promo-body">
+                <div class="promo-card">
+                    <img src="img/rosas.jpg" alt="Ramo de rosas eternas en promoción">
+                    <h4>Ramo de Rosas Eternas</h4>
+                    <p>Aprovecha nuestra promoción de bienvenida en ramos de rosas eternas hechas en fomi.</p>
+                </div>
+                <button type="button" class="btn-add-cart promo-add-cart" onclick="agregarAlCarrito('Ramo de Rosas Eternas (Promo)', 0)">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
+                <p class="promo-aviso">Si no ves algún producto o lo que buscas, pregúntanos que estaremos atentos para darte solución.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- SECCIÓN INICIO (HERO) -->
     <section id="inicio" class="hero">
         <div class="hero-glow-bg"></div>
@@ -114,7 +135,7 @@
             <p>En Alashmoon convertimos tus emociones en demostraciones. Porque hay cosas que se sienten más de lo que se dicen, y nosotros te ayudamos a expresarlas.</p>
             <div class="hero-buttons">
                 <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
-                <a href="#catalogo" class="btn-secondary">Cotizar Pedido</a>
+                <a href="https://wa.me/573160512872?text=Hola%20Alashmoon%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20personalizada%20o%20m%C3%A1s%20productos." target="_blank" class="btn-secondary">Cotizar pedido personalizado o más productos</a>
             </div>
         </div>
     </section>
@@ -132,30 +153,73 @@
             </div>
 
             <div class="rosas-layout">
-                <!-- CARRUSEL DE ARRASTRE: RAMOS DE ROSAS ETERNAS -->
-                <div class="contenedor-rosas">
-                    <div id="actions-rosas">
-                        <a id="arrowrigth-rosa" class="arrowrosa-enlace">
-                            <i class="fa-solid fa-chevron-right arrowrosa arrowrosa-derecha"></i>
-                        </a>
-                        <a id="arrowleft-rosa" class="arrowrosa-enlace">
-                            <i class="fa-solid fa-chevron-left arrowrosa arrowrosa-izquierda"></i>
-                        </a>
+                <!-- CARRUSEL 3D ROTATIVO -->
+                <div class="contenedor-cartelera-3d">
+                <div class="caja-3d" id="caja-3d" style="--cantidad: 11;">
+                    <div class="elemento-3d" style="--i: 0;">
+                        <div class="imagenes-3d">
+                            <img src="img/rosas.jpg" alt="Ramo de rosas eternas">
+                        </div>
                     </div>
-                    <div id="items-rosas">
-                        <img draggable="false" class="img-rosa" src="img/rosas.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/rosass.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/rosasas.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/rosasss.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/roshas.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/roshis.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/roshitas.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/rositas.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/roshitashi.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/ro.jpg" alt="Ramo de rosas eternas">
-                        <img draggable="false" class="img-rosa" src="img/ros.jpg" alt="Ramo de rosas eternas">
+                    <div class="elemento-3d" style="--i: 1;">
+                        <div class="imagenes-3d">
+                            <img src="img/rosass.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 2;">
+                        <div class="imagenes-3d">
+                            <img src="img/rosasas.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 3;">
+                        <div class="imagenes-3d">
+                            <img src="img/rosasss.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 4;">
+                        <div class="imagenes-3d">
+                            <img src="img/roshas.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 5;">
+                        <div class="imagenes-3d">
+                            <img src="img/roshis.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 6;">
+                        <div class="imagenes-3d">
+                            <img src="img/roshitas.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 7;">
+                        <div class="imagenes-3d">
+                            <img src="img/rositas.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 8;">
+                        <div class="imagenes-3d">
+                            <img src="img/roshitashi.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 9;">
+                        <div class="imagenes-3d">
+                            <img src="img/ro.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="elemento-3d" style="--i: 10;">
+                        <div class="imagenes-3d">
+                            <img src="img/ros.jpg" alt="Ramo de rosas eternas">
+                        </div>
+                    </div>
+                    <div class="piso-3d flex-3d">
+                        <div class="titulo-3d flex-3d">
+                            <p>Ramos</p>
+                            <p>de Rosas Eternas</p>
+<p>Hechos con Amor</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
                 <!-- FORMULARIO DE PEDIDO: ROSAS ETERNAS -->
                 <div class="pedido-form">
@@ -182,6 +246,11 @@
                 </div>
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <!-- CATEGORÍA: CARTELERAS PERSONALIZADAS -->
         <div class="category-block">
@@ -191,66 +260,23 @@
             </div>
 
             <div class="cartelera-layout">
-                <!-- CARRUSEL 3D ROTATIVO: CARTELERAS PERSONALIZADAS -->
-                <div class="contenedor-cartelera-3d">
-                <div class="caja-3d" id="caja-3d">
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
-                            <img src="img/carte.jpg" alt="Cartelera personalizada">
-                        </div>
+                <!-- CARRUSEL DE ARRASTRE -->
+                <div class="contenedor-rosas">
+                    <div id="actions-rosas">
+                        <a id="arrowrigth-rosa" class="arrowrosa-enlace">
+                            <i class="fa-solid fa-chevron-right arrowrosa arrowrosa-derecha"></i>
+                        </a>
+                        <a id="arrowleft-rosa" class="arrowrosa-enlace">
+                            <i class="fa-solid fa-chevron-left arrowrosa arrowrosa-izquierda"></i>
+                        </a>
                     </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/carte.jpg" alt="Cartelera personalizada">
-                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
-                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
-                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
-                            <img src="img/carte.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/carte.jpg" alt="Cartelera personalizada">
-                            <img src="img/caretelera.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
-                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="elemento-3d">
-                        <div class="imagenes-3d">
-                            <img src="img/catelera.jpg" alt="Cartelera personalizada">
-                            <img src="img/carteeleraa.jpg" alt="Cartelera personalizada">
-                        </div>
-                    </div>
-                    <div class="piso-3d flex-3d">
-                        <div class="titulo-3d flex-3d">
-                            <p>Carteleras</p>
-                            <p>Personalizadas</p>
-<p>Hechas con Amor</p>
-                        </div>
+                    <div id="items-rosas">
+                        <img draggable="false" class="img-rosa" src="img/caretelera.jpg" alt="Cartelera personalizada">
+                        <img draggable="false" class="img-rosa" src="img/carte.jpg" alt="Cartelera personalizada">
+                        <img draggable="false" class="img-rosa img-rotada" src="img/carteeleraa.jpg" alt="Cartelera personalizada">
+                        <img draggable="false" class="img-rosa" src="img/catelera.jpg" alt="Cartelera personalizada">
                     </div>
                 </div>
-            </div>
 
                 <!-- FORMULARIO DE PEDIDO: CARTELERAS PERSONALIZADAS -->
                 <div class="pedido-form">
