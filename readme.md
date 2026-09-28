@@ -1,6 +1,6 @@
 # Alashmoon S.A.S. | Arte, Emoción y Tecnología 🌙✨
 
-Plataforma web de comercio electrónico (e-commerce) desarrollada como proyecto formativo para el **ADSO SENA CSET** (Análisis y Desarrollo de Software). Este sitio web combina la elegancia del arte artesanal hecho a mano con la automatización digital y un diseño moderno e interactivo.
+Plataforma web de comercio electrónico (e-commerce). Este sitio web combina la elegancia del arte artesanal hecho a mano con la automatización digital y un diseño moderno e interactivo.
 
 ---
 
