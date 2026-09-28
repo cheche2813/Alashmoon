@@ -1,14 +1,210 @@
+/* =====================================================
+   SISTEMA DE TEMAS: OSCURO (por defecto) / CLARO
+   Se activa el modo claro con <html data-theme="light">
+   ===================================================== */
 :root {
-    --bg-dark: #0b0914;
-    --bg-card: #151026;
+    color-scheme: dark;
+
+    /* --- Paleta viva (modo oscuro): colores saturados para brillos --- */
+    --c1: #a855f7;   /* violeta  (texto/iconos) */
+    --c2: #3a86ff;   /* azul    (texto/iconos) */
+    --c3: #e056fd;   /* magenta (texto/iconos) */
+    --c4: #00e5ff;   /* cian    */
+    --c5: #ff6ec7;   /* rosa    */
+    --c6: #ffd166;   /* dorado  */
+
+    /* --- Paleta de rellenos: siempre con texto blanco legible encima --- */
+    --b1: #6d28d9;
+    --b2: #1d4ed8;
+    --b3: #7e22ce;
+
     --primary-purple: #7b2cbf;
     --accent-blue: #3a86ff;
+
+    /* --- Superficies --- */
+    --bg-dark: #0b0914;
+    --bg-card: #151026;
+    --bg-deep: #06040a;
+    --surface-nav: rgba(11, 9, 20, 0.9);
+    --surface-2: rgba(11, 9, 20, 0.7);
+    /* Cara clara del boton de tema: sostiene la luna negra en modo oscuro */
+    --toggle-face: #eef1f8;
+    --surface-3: rgba(11, 9, 20, 0.6);
+    --surface-4: rgba(11, 9, 20, 0.75);
+    --modal-veil: rgba(0, 0, 0, 0.75);
+    --field-bg: #0b0914;
+
+    /* --- Texto --- */
     --text-main: #f8f9fa;
     --text-muted: #b8b8d0;
+    --on-accent: #ffffff;
+    --ink-bg: #241a3d;
+    --ink-text: #ffffff;
+
+    /* --- Bordes y trazados --- */
+    --border-soft: rgba(184, 184, 208, 0.2);
+    --border-purple: rgba(123, 44, 191, 0.25);
+    --border-blue: rgba(58, 134, 255, 0.25);
+    --border-hair: rgba(255, 255, 255, 0.1);
+    --track-bg: rgba(255, 255, 255, 0.1);
+    --tint-blue: rgba(58, 134, 255, 0.08);
+    --tint-blue-strong: rgba(58, 134, 255, 0.18);
+    --tint-purple: rgba(123, 44, 191, 0.12);
+
+    /* --- Resplandores --- */
     --glow: 0 0 25px rgba(123, 44, 191, 0.4);
     --glow-blue: 0 0 25px rgba(58, 134, 255, 0.4);
+    --glow-strength: 1;
+    --halo-strength: 1;
+
+    /* --- Tintes de los pulsos de resplandor --- */
+    --glow-a1: rgba(123, 44, 191, 0.35);
+    --glow-a2: rgba(123, 44, 191, 0.18);
+    --glow-b1: rgba(58, 134, 255, 0.55);
+    --glow-b2: rgba(224, 86, 253, 0.30);
+    --glow-c1: rgba(58, 134, 255, 0.32);
+    --glow-c2: rgba(58, 134, 255, 0.16);
+    --glow-d1: rgba(0, 229, 255, 0.45);
+    --glow-d2: rgba(123, 44, 191, 0.28);
+
+    /* --- Brillo de las letras de los títulos --- */
+    --titulo-g1: rgba(58, 134, 255, 0.45);
+    --titulo-g2: rgba(123, 44, 191, 0.28);
+    --titulo-g3: rgba(224, 86, 253, 0.60);
+    --titulo-g4: rgba(0, 229, 255, 0.38);
+
+    /* --- Sombras --- */
+    --shadow-nav: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-deep: 0 15px 40px rgba(0, 0, 0, 0.4);
+    --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --shadow-img: 0 15px 40px rgba(0, 0, 0, 0.5);
+    --shadow-media: 0 10px 25px rgba(0, 0, 0, 0.4);
+
+    /* --- Tintes de secciones / medios --- */
+    --hero-tint: #1b1238;
+    --section-bg-opacity: 0.35;
+    --floor-tint: #9993;
+    --img-glow: #fff;
+    --star: #ffd700;
+    --social-bg: #1b1b1b;
+    --social-shadow: 0 0 5px 0 #f1e42cb2;
+    --poema-bg: #ffffff;
+    --poema-h: #333;
+    --poema-p: #666;
+    --dot-idle: #bbb;
+    --dot-active: #333;
+    --whatsapp: #25d366;
+    --whatsapp-2: #128c7e;
+    /* Verde WhatsApp oscuro para botones: el verde de marca queda solo para
+       iconos y acentos, porque el texto blanco sobre el verde claro no alcanza
+       el contraste minimo (WCAG AA). */
+    --wa-btn-1: #1a7f37;
+    --wa-btn-2: #0f5132;
+    --danger: #ff4d4d;
+
+    /* --- Velocidades de las animaciones --- */
+    --dur-titulo: 7s;
+    --dur-botones: 4s;
+    --dur-logo: 6s;
 }
 
+/* =====================================================
+   MODO CLARO: se oscurece la paleta para conservar el
+   contraste y los brillos siguen siendo visibles.
+   ===================================================== */
+[data-theme="light"] {
+    color-scheme: light;
+
+    --c1: #6b21a8;
+    --c2: #1d4ed8;
+    --c3: #a21caf;
+    --c4: #0e7490;
+    --c5: #be185d;
+    --c6: #b45309;
+
+    /* --- Paleta de rellenos: siempre con texto blanco legible encima --- */
+    --b1: #7c3aed;
+    --b2: #2563eb;
+    --b3: #9333ea;
+
+    --primary-purple: #6b21a8;
+    --accent-blue: #1d4ed8;
+
+    --bg-dark: #f5f2fc;
+    --bg-card: #ffffff;
+    --bg-deep: #ece6f9;
+    --surface-nav: rgba(255, 255, 255, 0.82);
+    --surface-2: rgba(255, 255, 255, 0.72);
+    --toggle-face: #ffffff;
+    --surface-3: rgba(255, 255, 255, 0.88);
+    --surface-4: rgba(255, 255, 255, 0.9);
+    --modal-veil: rgba(38, 24, 68, 0.45);
+    --field-bg: #ffffff;
+
+    --text-main: #241a3d;
+    --text-muted: #5b5177;
+    --on-accent: #ffffff;
+    --ink-bg: #241a3d;
+    --ink-text: #ffffff;
+
+    --border-soft: rgba(36, 26, 61, 0.16);
+    --border-purple: rgba(107, 33, 168, 0.22);
+    --border-blue: rgba(29, 78, 216, 0.26);
+    --border-hair: rgba(36, 26, 61, 0.12);
+    --track-bg: rgba(36, 26, 61, 0.1);
+    --tint-blue: rgba(29, 78, 216, 0.09);
+    --tint-blue-strong: rgba(29, 78, 216, 0.18);
+    --tint-purple: rgba(107, 33, 168, 0.1);
+
+    --glow: 0 0 22px rgba(107, 33, 168, 0.28);
+    --glow-blue: 0 0 22px rgba(29, 78, 216, 0.28);
+    --glow-strength: 0.7;
+    --halo-strength: 0.85;
+
+    --glow-a1: rgba(107, 33, 168, 0.20);
+    --glow-a2: rgba(107, 33, 168, 0.10);
+    --glow-b1: rgba(29, 78, 216, 0.30);
+    --glow-b2: rgba(162, 28, 175, 0.18);
+    --glow-c1: rgba(29, 78, 216, 0.20);
+    --glow-c2: rgba(29, 78, 216, 0.10);
+    --glow-d1: rgba(14, 116, 144, 0.28);
+    --glow-d2: rgba(107, 33, 168, 0.18);
+
+    --titulo-g1: rgba(29, 78, 216, 0.30);
+    --titulo-g2: rgba(107, 33, 168, 0.18);
+    --titulo-g3: rgba(190, 24, 93, 0.32);
+    --titulo-g4: rgba(14, 116, 144, 0.24);
+
+    --shadow-nav: 0 4px 20px rgba(70, 50, 130, 0.14);
+    --shadow-card: 0 10px 30px rgba(70, 50, 130, 0.12);
+    --shadow-deep: 0 15px 40px rgba(70, 50, 130, 0.16);
+    --shadow-soft: 0 8px 25px rgba(70, 50, 130, 0.1);
+    --shadow-img: 0 15px 40px rgba(70, 50, 130, 0.18);
+    --shadow-media: 0 10px 25px rgba(70, 50, 130, 0.16);
+
+    --hero-tint: #ffffff;
+    --section-bg-opacity: 0.15;
+    --floor-tint: #b6a9d6;
+    --img-glow: #a78bfa;
+    --star: #b45309;
+    --social-bg: #241a3d;
+    --social-shadow: 0 0 6px 0 rgba(124, 92, 214, 0.5);
+    --poema-bg: #ffffff;
+    --poema-h: #241a3d;
+    --poema-p: #5b5177;
+    --dot-idle: #c9c2dc;
+    --dot-active: #6b21a8;
+    --whatsapp: #1fa855;
+    --whatsapp-2: #0f7a56;
+    --wa-btn-1: #15803d;
+    --wa-btn-2: #0d4f30;
+    --danger: #dc2626;
+}
+
+/* =====================================================
+   RESET + TRANSICIÓN GLOBAL DE TEMA
+   ===================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -17,10 +213,28 @@
     scroll-behavior: smooth;
 }
 
+/* Suaviza el passage de oscuro a claro en todo el sitio */
+*,
+*::before,
+*::after {
+    transition: background-color 0.5s ease,
+                color 0.5s ease,
+                border-color 0.5s ease,
+                box-shadow 0.5s ease,
+                fill 0.5s ease,
+                outline-color 0.5s ease;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     overflow-x: hidden;
+    min-height: 100vh;
+}
+
+::selection {
+    background: var(--primary-purple);
+    color: #fff;
 }
 
 /* PRECARGADOR CON ANIMACIÓN DE TRANSFORMACIÓN */
@@ -30,7 +244,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #06040a;
+    background: var(--bg-deep);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +262,7 @@ body {
     width: 80px;
     height: 80px;
     margin: 0 auto 20px auto;
-    background: radial-gradient(circle, var(--primary-purple) 0%, var(--bg-dark) 80%);
+    background: radial-gradient(circle, var(--primary-purple) 0%, var(--bg-deep) 80%);
     border: 2px solid var(--accent-blue);
     border-radius: 50%;
     display: flex;
@@ -66,10 +280,8 @@ body {
 .loader-content h2 {
     font-size: 1.8rem;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, #fff, var(--accent-blue));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .loader-content p {
@@ -82,7 +294,7 @@ body {
 .progress-bar {
     width: 100%;
     height: 6px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--track-bg);
     border-radius: 3px;
     overflow: hidden;
 }
@@ -90,7 +302,10 @@ body {
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-purple), var(--accent-blue));
+    background: linear-gradient(90deg, var(--primary-purple), var(--accent-blue), var(--c3), var(--primary-purple));
+    background-size: 300% 100%;
+    animation: gradiente-barra 3s linear infinite;
+    box-shadow: 0 0 12px rgba(123, 44, 191, 0.6);
     transition: width 0.3s ease;
 }
 
@@ -109,14 +324,15 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 8%;
-    background: rgba(11, 9, 20, 0.9);
+    background: var(--surface-nav);
     backdrop-filter: blur(15px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(123, 44, 191, 0.25);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border-bottom: 1px solid var(--border-purple);
+    box-shadow: var(--shadow-nav);
 }
 
 .logo {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -126,12 +342,16 @@ body {
 }
 
 .navbar-logo-img {
+    position: relative;
+    z-index: 1;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--accent-blue);
     box-shadow: var(--glow-blue);
+    animation: aurora-imagen var(--dur-logo) ease-in-out infinite,
+               respirar-logo 4s ease-in-out infinite;
 }
 
 .logo-circle {
@@ -159,15 +379,121 @@ body {
     text-decoration: none;
     color: var(--text-muted);
     font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding: 4px 0;
     transition: 0.3s;
 }
 
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--c2), var(--c3), var(--c4));
+    background-size: 300% 100%;
+    animation: gradiente-barra 3s linear infinite;
+    transition: width 0.35s ease;
+}
 .nav-links a:hover {
-    color: var(--accent-blue);
+    color: var(--text-main);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* =====================================================
+   BOTÓN DE CAMBIO DE MODO OSCURO / CLARO
+   ===================================================== */
+.theme-toggle {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--toggle-face);
+    /* color base legible sobre la cara clara (los iconos traen su propio color) */
+    color: #1a1430;
+    isolation: isolate;
+    animation: pulso-aurora 4s ease-in-out infinite;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Anillo sobrio alrededor del boton: solo violeta y azul, sin arcoiris */
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+        var(--c2), var(--c1), var(--c2));
+    animation: girar-aurora var(--dur-logo) linear infinite;
+    z-index: -2;
+    opacity: calc(0.5 * var(--halo-strength));
+    filter: saturate(0.5);
+}
+
+/* Halo difuminado del anillo */
+.theme-toggle::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+        var(--c2), var(--c1), var(--c2));
+    filter: blur(14px) saturate(0.5);
+    animation: girar-aurora var(--dur-logo) linear infinite reverse;
+    z-index: -3;
+    opacity: calc(0.3 * var(--halo-strength));
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(12deg);
+}
+
+.theme-toggle i {
+    position: absolute;
+    font-size: 1.15rem;
+    line-height: 1;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle .icono-sol {
+    opacity: 0;
+    transform: rotate(-140deg) scale(0.4);
+    color: #d97706;
+}
+
+/* Luna negra sobre la cara clara del boton: se lee de un vistazo */
+.theme-toggle .icono-luna {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: #0b0914;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+
+[data-theme="light"] .theme-toggle .icono-sol {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 7px rgba(245, 158, 11, 0.8));
+}
+
+[data-theme="light"] .theme-toggle .icono-luna {
+    opacity: 0;
+    transform: rotate(140deg) scale(0.4);
 }
 
 .btn-nav {
-    background: linear-gradient(135deg, var(--primary-purple), var(--accent-blue));
+    background: linear-gradient(135deg, var(--b1), var(--b2));
     padding: 8px 20px !important;
     border-radius: 20px;
     color: white !important;
@@ -183,7 +509,7 @@ body {
     text-align: center;
     padding: 0 20px;
     position: relative;
-    background: radial-gradient(circle at center, #1b1238 0%, var(--bg-dark) 75%);
+    background: radial-gradient(circle at center, var(--hero-tint) 0%, var(--bg-dark) 75%);
     overflow: hidden;
 }
 
@@ -195,6 +521,7 @@ body {
     border-radius: 50%;
     z-index: 1;
     filter: blur(50px);
+    animation: orbita-fondo 16s ease-in-out infinite alternate;
 }
 
 .hero-content {
@@ -204,6 +531,7 @@ body {
     max-width: 800px;
 }
 
+/* AURORA del logo principal: resplandor cambiante de colores */
 .hero-content .img-fluid {
     display: block;
     width: min(420px, 75vw);
@@ -213,12 +541,12 @@ body {
     object-fit: contain;
     margin: 0 auto 25px;
     border-radius: 12px;
-    box-shadow: var(--glow);
+    animation: aurora-imagen 9s ease-in-out infinite;
 }
 
 .badge-hero {
     display: inline-block;
-    background: rgba(123, 44, 191, 0.25);
+    background: var(--tint-purple);
     border: 1px solid var(--primary-purple);
     padding: 8px 18px;
     border-radius: 20px;
@@ -232,11 +560,8 @@ body {
     font-size: clamp(1.9rem, 5vw, 3.2rem);
     font-weight: 800;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #fff 30%, var(--accent-blue) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     line-height: 1.2;
+    letter-spacing: 0.5px;
 }
 
 .hero-content p {
@@ -250,6 +575,7 @@ body {
     display: flex;
     gap: 15px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
@@ -257,24 +583,53 @@ body {
     border-radius: 30px;
     font-weight: 600;
     text-decoration: none;
-    transition: 0.3s transform, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s transform, box-shadow 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-purple), var(--accent-blue));
+    background: linear-gradient(135deg, var(--b1), var(--b2), var(--b3), var(--b1));
+    background-size: 300% 300%;
     color: white;
-    box-shadow: var(--glow);
+    animation: gradiente-vivo var(--dur-botones) ease infinite;
 }
 
 .btn-secondary {
-    background: transparent;
+    background: var(--tint-blue);
     border: 2px solid var(--accent-blue);
     color: var(--text-main);
+    animation: gradiente-borde 5s linear infinite;
+}
+
+.btn-primary::after,
+.btn-secondary::after,
+.btn-buy-now::after,
+.btn-add-cart::after,
+.cart-btn::after,
+.btn-whatsapp-send::after,
+.btn-checkout-whatsapp::after,
+.btn-order::after,
+.poema-next-button::after,
+.promo-add-cart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg,
+        transparent 10%,
+        rgba(255, 255, 255, 0.45) 50%,
+        transparent 90%);
+    transform: translateX(-160%) skewX(-18deg);
+    animation: barrido-brillo 4.5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--glow-blue);
+    transform: translateY(-4px) scale(1.03);
+    filter: brightness(1.12) saturate(1.15);
 }
 
 /* SECCIONES GENERALES */
@@ -294,7 +649,7 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0.35;
+    opacity: var(--section-bg-opacity);
     pointer-events: none;
 }
 
@@ -327,11 +682,8 @@ section {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 10px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #fff, var(--text-muted));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: 0.5px;
 }
 
 .section-subtitle {
@@ -367,6 +719,7 @@ section {
 
 .category-title i {
     font-size: 1.5rem;
+    -webkit-text-fill-color: currentColor;
     color: var(--primary-purple);
 }
 
@@ -385,9 +738,9 @@ section {
     background: var(--bg-card);
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(123, 44, 191, 0.25);
+    border: 1px solid var(--border-purple);
     transition: 0.4s transform, 0.4s border-color, 0.4s box-shadow;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: var(--shadow-card);
 }
 
 .card-producto:hover {
@@ -411,7 +764,7 @@ section {
     justify-content: center;
     font-size: 4.2rem;
     color: rgba(123, 44, 191, 0.55);
-    background: linear-gradient(135deg, #1b1238 0%, var(--bg-card) 100%);
+    background: linear-gradient(135deg, var(--hero-tint) 0%, var(--bg-card) 100%);
 }
 
 .img-container img {
@@ -431,12 +784,14 @@ section {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, var(--primary-purple), var(--accent-blue));
+    background: linear-gradient(135deg, var(--b1), var(--b2), var(--b3), var(--b1));
+    background-size: 300% 300%;
     color: white;
     padding: 6px 14px;
     font-size: 0.8rem;
     border-radius: 12px;
     font-weight: 600;
+    animation: gradiente-vivo 4s ease infinite;
 }
 
 .card-body {
@@ -465,7 +820,7 @@ section {
 
 .btn-order {
     width: 100%;
-    background: #25d366;
+    background: linear-gradient(135deg, var(--wa-btn-1), var(--wa-btn-2));
     color: white;
     border: none;
     padding: 12px;
@@ -476,8 +831,23 @@ section {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: 0.3s opacity, 0.3s transform;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s opacity, 0.3s transform, 0.3s box-shadow;
+    box-shadow: 0 4px 15px rgba(26, 127, 55, 0.35);
+}
+
+.btn-order::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent 10%, rgba(255, 255, 255, 0.45) 50%, transparent 90%);
+    transform: translateX(-160%) skewX(-18deg);
+    animation: barrido-brillo 4.5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .btn-order:hover {
@@ -490,8 +860,8 @@ section {
     background: var(--bg-card);
     padding: 50px;
     border-radius: 25px;
-    border: 1px solid rgba(58, 134, 255, 0.25);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 1px solid var(--border-blue);
+    box-shadow: var(--shadow-deep);
 }
 
 .about-text p {
@@ -510,25 +880,34 @@ section {
 }
 
 .mv-box {
-    background: rgba(11, 9, 20, 0.7);
+    background: var(--surface-2);
     padding: 35px;
     border-radius: 20px;
     border-top: 4px solid var(--accent-blue);
     position: relative;
-    border: 1px solid rgba(123, 44, 191, 0.2);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    border: 1px solid var(--border-purple);
+    box-shadow: var(--shadow-soft);
+    transition: 0.4s transform, 0.4s box-shadow, 0.4s border-color;
+}
+
+.mv-box:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--glow);
+    border-color: var(--accent-blue);
 }
 
 .mv-icon {
     font-size: 1.8rem;
     color: var(--accent-blue);
     margin-bottom: 18px;
+    -webkit-text-fill-color: currentColor;
 }
 
 .mv-box h4 {
     color: var(--text-main);
     margin-bottom: 14px;
     font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .mv-box p {
@@ -550,8 +929,15 @@ section {
     background: var(--bg-card);
     padding: 30px;
     border-radius: 20px;
-    border: 1px solid rgba(123, 44, 191, 0.25);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-purple);
+    box-shadow: var(--shadow-card);
+    transition: 0.4s transform, 0.4s box-shadow, 0.4s border-color;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+    box-shadow: var(--glow-blue);
 }
 
 .review-header {
@@ -568,6 +954,7 @@ section {
     object-fit: cover;
     border: 2px solid var(--primary-purple);
     box-shadow: var(--glow);
+    animation: aurora-imagen 7s ease-in-out infinite;
 }
 
 .review-header h4 {
@@ -579,12 +966,18 @@ section {
     font-size: 0.88rem;
     color: var(--accent-blue);
     text-decoration: none;
+    transition: 0.3s;
+}
+
+.ig-link:hover {
+    filter: drop-shadow(0 0 6px rgba(58, 134, 255, 0.7));
 }
 
 .stars {
-    color: #ffd700;
+    color: var(--star);
     margin-bottom: 15px;
     font-size: 0.95rem;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
 }
 
 .review-text {
@@ -608,10 +1001,10 @@ section {
 .form-group input, .form-group select, .form-group textarea {
     width: 100%;
     padding: 14px 18px;
-    background: var(--bg-dark);
-    border: 1px solid rgba(184, 184, 208, 0.2);
+    background: var(--field-bg);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
-    color: white;
+    color: var(--text-main);
     font-size: 1rem;
     outline: none;
     transition: 0.3s border-color, 0.3s box-shadow;
@@ -620,6 +1013,12 @@ section {
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--accent-blue);
     box-shadow: var(--glow-blue);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.75;
 }
 
 .form-buttons {
@@ -640,27 +1039,29 @@ section {
     justify-content: center;
     gap: 10px;
     color: white;
-    transition: 0.3s opacity, 0.3s transform;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s opacity, 0.3s transform, 0.3s box-shadow;
 }
 
 .btn-whatsapp-send {
-    background: #25d366;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    background: linear-gradient(135deg, var(--wa-btn-1), var(--wa-btn-2));
+    box-shadow: 0 4px 15px rgba(26, 127, 55, 0.35);
 }
 
 .btn-whatsapp-send:hover {
     opacity: 0.95;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 35px;
-    background: #06040a;
+    background: var(--bg-deep);
     color: var(--text-muted);
     font-size: 0.9rem;
-    border-top: 1px solid rgba(123, 44, 191, 0.15);
+    border-top: 1px solid var(--border-purple);
 }
 
 @keyframes fadeIn {
@@ -670,7 +1071,8 @@ footer {
 
 /* BOTÓN DEL CARRITO EN EL NAVBAR */
 .cart-btn {
-    background: linear-gradient(135deg, var(--primary-purple), var(--accent-blue));
+    background: linear-gradient(135deg, var(--b1), var(--b2), var(--b3), var(--b1));
+    background-size: 300% 300%;
     border: none;
     padding: 8px 16px;
     border-radius: 20px;
@@ -680,12 +1082,14 @@ footer {
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: var(--glow);
+    position: relative;
+    overflow: hidden;
+    animation: gradiente-vivo var(--dur-botones) ease infinite;
     transition: 0.3s transform;
 }
 
 .cart-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.07);
 }
 
 #cart-count {
@@ -695,13 +1099,16 @@ footer {
     border-radius: 50%;
     font-size: 0.75rem;
     font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    animation: latir-contador 2.2s ease-in-out infinite;
 }
 
 /* MODAL DEL CARRITO */
 .cart-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--modal-veil);
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
@@ -722,7 +1129,7 @@ footer {
     max-width: 480px;
     border-radius: 20px;
     border: 1px solid var(--accent-blue);
-    box-shadow: var(--glow-blue);
+    box-shadow: var(--glow-blue), var(--shadow-deep);
     display: flex;
     flex-direction: column;
     max-height: 80vh;
@@ -734,12 +1141,22 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-hair);
+    background: var(--surface-2);
 }
 
 .cart-header h3 {
     font-size: 1.2rem;
+    font-weight: 700;
     color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-header h3 i {
+    -webkit-text-fill-color: currentColor;
+    color: var(--accent-blue);
 }
 
 .close-cart {
@@ -748,11 +1165,21 @@ footer {
     color: var(--text-muted);
     font-size: 1.8rem;
     cursor: pointer;
+    line-height: 1;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.3s;
 }
 
 .close-cart:hover {
-    color: #ff4d4d;
+    color: var(--danger);
+    background: rgba(255, 77, 77, 0.12);
+    box-shadow: 0 0 14px rgba(255, 77, 77, 0.45);
+    transform: rotate(90deg);
 }
 
 .cart-items-list {
@@ -774,10 +1201,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(11, 9, 20, 0.6);
+    background: var(--surface-3);
     padding: 12px 15px;
     border-radius: 10px;
-    border: 1px solid rgba(123, 44, 191, 0.2);
+    border: 1px solid var(--border-purple);
 }
 
 .cart-item-info h4 {
@@ -797,9 +1224,9 @@ footer {
 }
 
 .cart-item-actions button {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
+    background: var(--track-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
     width: 28px;
     height: 28px;
     border-radius: 6px;
@@ -810,21 +1237,28 @@ footer {
 
 .cart-item-actions button:hover {
     background: var(--primary-purple);
+    border-color: var(--primary-purple);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(123, 44, 191, 0.6);
+    transform: scale(1.12);
 }
 
 .btn-remove-item {
-    color: #ff4d4d !important;
+    color: var(--danger) !important;
     background: rgba(255, 77, 77, 0.1) !important;
+    border-color: var(--danger) !important;
 }
 
 .btn-remove-item:hover {
-    background: rgba(255, 77, 77, 0.3) !important;
+    background: var(--danger) !important;
+    color: #fff !important;
+    box-shadow: 0 0 14px rgba(255, 77, 77, 0.6);
 }
 
 .cart-footer {
     padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(6, 4, 10, 0.5);
+    border-top: 1px solid var(--border-hair);
+    background: var(--surface-2);
 }
 
 .cart-total {
@@ -835,9 +1269,13 @@ footer {
     margin-bottom: 15px;
 }
 
+.cart-total span:last-child {
+    color: var(--accent-blue);
+}
+
 .btn-checkout-whatsapp {
     width: 100%;
-    background: #25d366;
+    background: linear-gradient(135deg, var(--wa-btn-1), var(--wa-btn-2));
     color: white;
     border: none;
     padding: 12px;
@@ -848,12 +1286,16 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    transition: 0.3s opacity;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(26, 127, 55, 0.35);
+    animation: pulso-whatsapp 3s ease-in-out infinite;
+    transition: 0.3s opacity, 0.3s transform;
 }
 
 .btn-checkout-whatsapp:hover {
     opacity: 0.95;
+    transform: translateY(-2px);
 }
 
 /* =====================================================
@@ -880,7 +1322,7 @@ footer {
     height: 200px;
     width: 300px;
     position: absolute;
-    box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px var(--img-glow);
 }
 
 :root {
@@ -927,8 +1369,8 @@ footer {
     height: 52em;
     width: 52em;
     transform: rotateX(90deg) translateX(-320px) translateY(40px) translateZ(140px);
-    background: -webkit-radial-gradient(center center, farthest-side, #9993, transparent);
-    background: radial-gradient(circle at center, #9993, transparent);
+    background: -webkit-radial-gradient(center center, farthest-side, var(--floor-tint), transparent);
+    background: radial-gradient(circle at center, var(--floor-tint), transparent);
     border-radius: 50%;
 }
 
@@ -946,6 +1388,7 @@ footer {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 1.7em;
+    text-align: center;
 }
 
 .titulo-3d p {
@@ -1021,8 +1464,8 @@ footer {
     position: relative;
     background: var(--bg-card);
     border-radius: 20px;
-    border: 1px solid rgba(123, 44, 191, 0.25);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border-purple);
+    box-shadow: var(--shadow-deep);
     margin-bottom: 50px;
 }
 
@@ -1180,7 +1623,8 @@ footer {
     background-color: var(--bg-card);
     position: absolute;
     border-radius: 18px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-img);
+    border: 1px solid var(--border-hair);
 }
 
 .contenedor-rosas #items-rosas .img-rosa.img-rotada {
@@ -1568,8 +2012,9 @@ footer {
     width: 480px;
     border-radius: 20px;
     overflow: hidden;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--poema-bg);
+    border: 1px solid var(--border-hair);
+    box-shadow: var(--shadow-card);
 }
 
 .poema-card-image {
@@ -1586,6 +2031,7 @@ footer {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
 }
 
 .poema-card-content {
@@ -1598,14 +2044,15 @@ footer {
 .poema-card-content h3 {
     font-size: 24px;
     margin: 0 0 10px 0;
-    color: #333;
+    font-weight: 700;
+    color: var(--poema-h);
 }
 
 .poema-card-content p {
     font-size: 17px;
     line-height: 1.6;
     margin: 0 0 20px 0;
-    color: #666;
+    color: var(--poema-p);
 }
 
 .poema-card-navigation {
@@ -1618,7 +2065,7 @@ footer {
     height: 10px;
     width: 10px;
     margin: 0 5px;
-    background-color: #bbb;
+    background-color: var(--dot-idle);
     border-radius: 5px;
     display: inline-block;
     animation-duration: 0.5s;
@@ -1627,22 +2074,22 @@ footer {
 
 @keyframes poema-dot-animation {
     from {
-        background-color: #bbb;
+        background-color: var(--dot-idle);
         width: 10px;
     }
     to {
-        background-color: #333;
+        background-color: var(--dot-active);
         width: 30px;
     }
 }
 
 @keyframes poema-dot-animation-reverse {
     from {
-        background-color: #333;
+        background-color: var(--dot-active);
         width: 30px;
     }
     to {
-        background-color: #bbb;
+        background-color: var(--dot-idle);
         width: 10px;
     }
 }
@@ -1663,9 +2110,10 @@ footer {
 }
 
 .poema-next-button {
-    background-color: #272727;
+    background: linear-gradient(135deg, var(--b1), var(--b2), var(--b1));
+    background-size: 300% 300%;
     color: white;
-    border: 1px solid #272727;
+    border: none;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -1674,17 +2122,20 @@ footer {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: gradiente-vivo 4s ease infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .poema-next-button:hover {
-    background-color: #939393;
-    border: 1px solid #939393;
+    transform: scale(1.15);
+    box-shadow: 0 0 18px rgba(123, 44, 191, 0.8);
 }
 
 .poema-previous-button {
-    background-color: #fff;
-    color: #272727;
-    border: 1px solid #272727;
+    background: var(--poema-bg);
+    color: var(--poema-h);
+    border: 2px solid var(--accent-blue);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -1693,12 +2144,15 @@ footer {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .poema-previous-button:hover {
-    color: white;
-    border: 1px solid #939393;
-    background-color: #939393;
+    color: #fff;
+    border-color: var(--primary-purple);
+    background: linear-gradient(135deg, var(--b1), var(--b2));
+    transform: scale(1.15);
+    filter: brightness(1.12) saturate(1.15);
 }
 
 .poema-ocultar {
@@ -1856,8 +2310,8 @@ footer {
 }
 
 .redes li {
-    box-shadow: 0 0 5px 0 #f1e42cb2;
-    background: #1b1b1b;
+    box-shadow: var(--social-shadow);
+    background: var(--social-bg);
     width: 40px;
     height: 40px;
     position: relative;
@@ -1877,13 +2331,15 @@ footer {
     color: var(--text-main);
     box-shadow: none;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .redes li:hover:not(.titulo) {
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    box-shadow: 0 0 12px rgba(123, 44, 191, 0.8);
+    transform: scale(1.15) rotate(8deg);
+    -webkit-transform: scale(1.15) rotate(8deg);
+    box-shadow: 0 0 20px rgba(123, 44, 191, 0.9),
+                0 0 40px rgba(58, 134, 255, 0.55);
 }
 
 .redes li a {
@@ -1901,32 +2357,43 @@ footer {
     -webkit-transform: translate(-50%, -50%);
     font-size: 20px;
     color: var(--accent-blue);
-    transition: color 300ms;
+    transition: color 300ms, text-shadow 300ms;
 }
 
 .redes li:hover:not(.titulo) a i {
     color: #fff;
+    text-shadow: 0 0 12px rgba(58, 134, 255, 0.9);
 }
-/* --- FORMULARIOS DE PEDIDO POR CATEGOR�A --- */
+/* --- FORMULARIOS DE PEDIDO POR CATEGORÍA --- */
 .pedido-form {
     margin-top: 45px;
     padding: 30px 30px 20px;
-    background: rgba(11, 9, 20, 0.75);
-    border: 1px solid rgba(123, 44, 191, 0.35);
+    background: var(--surface-4);
+    border: 1px solid var(--border-purple);
     border-radius: 20px;
     box-shadow: var(--glow);
+    backdrop-filter: blur(8px);
+    transition: 0.4s box-shadow, 0.4s border-color, 0.4s transform;
+}
+
+.pedido-form:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--glow-blue);
 }
 
 .pedido-form h4 {
     font-size: 1.35rem;
     margin-bottom: 6px;
-    background: linear-gradient(90deg, var(--primary-purple), var(--accent-blue));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 10px;
+}
+
+.pedido-form h4 i {
+    -webkit-text-fill-color: currentColor;
+    color: var(--primary-purple);
+    font-size: 1.15rem;
 }
 
 .pedido-sub {
@@ -1952,16 +2419,17 @@ footer {
     gap: 12px;
     padding: 16px 20px;
     margin-bottom: 22px;
-    background: rgba(58, 134, 255, 0.08);
-    border: 1px dashed rgba(58, 134, 255, 0.4);
+    background: var(--tint-blue);
+    border: 1px dashed var(--border-blue);
     border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s background, 0.3s border-color;
+    transition: 0.3s background, 0.3s border-color, 0.3s box-shadow;
 }
 
 .check-cart:hover {
-    background: rgba(58, 134, 255, 0.14);
+    background: var(--tint-blue-strong);
     border-color: var(--accent-blue);
+    box-shadow: 0 0 16px rgba(58, 134, 255, 0.25);
 }
 
 .check-cart input {
@@ -1983,17 +2451,19 @@ footer {
     align-items: center;
     gap: 10px;
     padding: 12px 18px;
-    background: var(--bg-dark);
-    border: 1px solid rgba(184, 184, 208, 0.2);
+    background: var(--field-bg);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: 0.3s border-color, 0.3s background, 0.3s color;
+    transition: 0.3s border-color, 0.3s background, 0.3s color, 0.3s box-shadow, 0.3s transform;
 }
 
 .radio-option:hover {
     border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(58, 134, 255, 0.25);
 }
 
 .radio-option input {
@@ -2005,17 +2475,18 @@ footer {
 
 .radio-option:has(input:checked) {
     border-color: var(--accent-blue);
-    background: rgba(58, 134, 255, 0.12);
-    color: white;
+    background: var(--tint-blue-strong);
+    color: var(--text-main);
+    box-shadow: 0 0 16px rgba(58, 134, 255, 0.35);
 }
 
 .btn-whatsapp-send {
-    background: linear-gradient(135deg, #25d366, #128c7e);
+    background: linear-gradient(135deg, var(--wa-btn-1), var(--wa-btn-2));
 }
 
 .btn-whatsapp-send:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
 }
 
 .cart-item-detail {
@@ -2037,31 +2508,37 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: 0.3s opacity, 0.3s transform, 0.3s box-shadow, 0.3s border-color;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s opacity, 0.3s transform, 0.3s box-shadow, 0.3s border-color, 0.3s color, 0.3s background;
 }
 
 .btn-buy-now {
     border: none;
     color: white;
-    background: linear-gradient(135deg, var(--primary-purple), var(--accent-blue));
-    box-shadow: 0 4px 15px rgba(123, 44, 191, 0.35);
+    background: linear-gradient(135deg, var(--b1), var(--b2), var(--b3), var(--b1));
+    background-size: 300% 300%;
+    animation: gradiente-vivo var(--dur-botones) ease infinite;
 }
 
 .btn-buy-now:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    filter: brightness(1.12) saturate(1.15);
 }
 
 .btn-add-cart {
     color: var(--accent-blue);
-    background: rgba(58, 134, 255, 0.08);
+    background: var(--tint-blue);
     border: 1.5px solid var(--accent-blue);
+    animation: gradiente-borde 5s linear infinite;
 }
 
 .btn-add-cart:hover {
-    background: rgba(58, 134, 255, 0.18);
-    border-color: var(--primary-purple);
+    background: linear-gradient(135deg, var(--b1), var(--b2));
+    border-color: var(--c3);
     color: white;
+    transform: translateY(-3px) scale(1.02);
+    filter: brightness(1.12) saturate(1.15);
 }
 
 /* --- MODAL DE DATOS GLOBALES DEL PEDIDO (SCROLL) --- */
@@ -2079,8 +2556,8 @@ footer {
 }
 
 .order-summary-item {
-    background: rgba(11, 9, 20, 0.6);
-    border: 1px solid rgba(123, 44, 191, 0.25);
+    background: var(--surface-3);
+    border: 1px solid var(--border-purple);
     border-radius: 10px;
     padding: 12px 15px;
     display: flex;
@@ -2119,8 +2596,8 @@ footer {
 }
 
 #promo-modal .promo-card {
-    background: rgba(58, 134, 255, 0.06);
-    border: 1px dashed rgba(58, 134, 255, 0.45);
+    background: var(--tint-blue);
+    border: 1px dashed var(--border-blue);
     border-radius: 14px;
     padding: 20px;
     text-align: center;
@@ -2132,16 +2609,13 @@ footer {
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-media);
 }
 
 #promo-modal .promo-card h4 {
     font-size: 1.2rem;
     margin-bottom: 8px;
-    background: linear-gradient(90deg, var(--primary-purple), var(--accent-blue));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-weight: 700;
 }
 
 #promo-modal .promo-card p {
@@ -2152,13 +2626,14 @@ footer {
 
 #promo-modal .promo-add-cart {
     width: 100%;
+    flex: none;
 }
 
 #promo-modal .promo-aviso {
     font-size: 0.95rem;
     text-align: center;
     color: var(--text-main);
-    background: rgba(123, 44, 191, 0.12);
+    background: var(--tint-purple);
     border-left: 4px solid var(--primary-purple);
     padding: 12px 14px;
     border-radius: 8px;
@@ -2181,4 +2656,431 @@ footer {
 
 .contenedor-rosas #items-rosas .img-rosa.img-right-rosa:hover {
     transform: translateX(0%) scale(0.95);
+}
+
+/* =====================================================
+   EFECTOS Y ANIMACIONES GLOBALES
+   Gradientes que se mueven solos, auroras en los logos,
+   resplandor en los botones y modo claro bien calibrado.
+   ===================================================== */
+
+/* ---------- 1. RESPLANDOR Y AISLAMIENTO DE LOS BOTONES ----------
+   Los botones con relleno degradado laten en violeta/azul y los
+   de borde laten en azul/cian. El hover usa filter (no
+   box-shadow) para no ser anulado por la animacion. */
+.btn-primary,
+.btn-buy-now,
+.cart-btn,
+.poema-next-button {
+    animation: gradiente-vivo var(--dur-botones) ease infinite,
+               pulso-resplandor 3.4s ease-in-out infinite;
+}
+
+.btn-secondary,
+.btn-add-cart,
+.poema-previous-button {
+    animation: gradiente-borde 5s linear infinite,
+               pulso-resplandor-azul 3.4s ease-in-out infinite;
+}
+
+/* Botones de WhatsApp: laten en verde */
+.btn-whatsapp-send,
+.btn-checkout-whatsapp,
+.btn-order {
+    animation: pulso-whatsapp 3s ease-in-out infinite;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-buy-now:hover,
+.btn-add-cart:hover,
+.btn-order:hover,
+.btn-whatsapp-send:hover,
+.btn-checkout-whatsapp:hover {
+    transform: translateY(-4px) scale(1.02);
+    filter: brightness(1.12) saturate(1.15);
+}
+
+/* ---------- 2. TITULOS CON GRADIENTE ANIMADO ---------- */
+.hero-content h1,
+.section-title,
+.category-title,
+.loader-content h2,
+.logo span,
+.pedido-form h4,
+#promo-modal .promo-card h4,
+.cart-header h3,
+.mv-box h4,
+.review-header h4,
+.cart-item-info h4,
+.order-summary-item strong,
+.redes li.titulo,
+.titulo-3d p {
+    background-image: linear-gradient(100deg,
+        var(--c1), var(--c2), var(--c3), var(--c4), var(--c5), var(--c6), var(--c1));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradiente-vivo var(--dur-titulo) ease infinite,
+               respirar-titulo 5s ease-in-out infinite;
+}
+
+/* Los titulos grandes flotan muy suavemente */
+.hero-content h1,
+.section-title,
+.category-title,
+.loader-content h2 {
+    animation: gradiente-vivo var(--dur-titulo) ease infinite,
+               respirar-titulo 5s ease-in-out infinite,
+               flotar-titulo 7s ease-in-out infinite;
+}
+
+/* Las tarjetas de poema son blancas en ambos modos: se usa
+   un degradado siempre oscuro para no perder legibilidad. */
+.poema-card-content h3 {
+    background-image: linear-gradient(100deg, #6b21a8, #1d4ed8, #be185d, #6b21a8);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradiente-vivo var(--dur-titulo) ease infinite;
+}
+
+/* El titulo 3D se anima sin filtro para no aplanar el
+   renderizado en perspectiva del carrusel. */
+.titulo-3d p {
+    animation: gradiente-vivo var(--dur-titulo) ease infinite;
+}
+
+/* Los iconos dentro de los titulos siguen su propio color */
+.category-title i,
+.pedido-form h4 i,
+.cart-header h3 i,
+.mv-icon,
+.price,
+.ig-link {
+    -webkit-text-fill-color: currentColor;
+    animation: icono-vivo 6s ease-in-out infinite;
+}
+
+/* ---------- 3. AURORA EN LOS LOGOS ---------- */
+.hero-content .img-fluid,
+.review-img-mini,
+.navbar-logo-img {
+    animation: aurora-imagen 9s ease-in-out infinite;
+}
+
+.logo span {
+    -webkit-text-fill-color: transparent;
+}
+
+/* Halo que orbita el logo del navegador */
+.logo::before {
+    z-index: 0;
+}
+
+/* ---------- 4. SUAVIZADO DE LAS TRANSICIONES DE TEMA ---------- */
+body,
+.navbar,
+section,
+footer,
+.hero,
+.cart-content,
+.cart-item-row,
+.order-summary-item,
+.logo,
+.logo::before,
+.theme-toggle::before,
+.theme-toggle::after,
+.mv-box,
+.radio-option,
+.check-cart {
+    transition: background-color 0.55s ease,
+                background-image 0.55s ease,
+                color 0.55s ease,
+                border-color 0.55s ease,
+                box-shadow 0.55s ease,
+                opacity 0.55s ease,
+                filter 0.55s ease,
+                transform 0.35s ease;
+}
+
+/* El modal mantiene su propio fundido de apertura y cierre */
+.cart-modal {
+    transition: opacity 0.3s ease,
+                visibility 0.3s ease,
+                background-color 0.55s ease;
+}
+
+/* ---------- 5. AJUSTES FINOS EN MODO CLARO ---------- */
+[data-theme="light"] .hero-glow-bg {
+    background: radial-gradient(circle, rgba(107, 33, 168, 0.16) 0%, transparent 70%);
+}
+
+[data-theme="light"] .contenedor-cartelera-3d .elemento-3d img {
+    -webkit-box-reflect: below 8px linear-gradient(transparent, transparent, rgba(60, 40, 110, 0.12));
+    box-reflect: below 8px linear-gradient(transparent, transparent, rgba(60, 40, 110, 0.12));
+}
+
+[data-theme="light"] .piso-3d {
+    background: -webkit-radial-gradient(center center, farthest-side, rgba(150, 130, 200, 0.35), transparent);
+    background: radial-gradient(circle at center, rgba(150, 130, 200, 0.35), transparent);
+}
+
+[data-theme="light"] .titulo-3d {
+    color: var(--primary-purple);
+}
+
+[data-theme="light"] .card-poema {
+    box-shadow: 0 18px 45px rgba(70, 50, 130, 0.18);
+}
+
+[data-theme="light"] .contenedor-rosas {
+    box-shadow: 0 18px 45px rgba(70, 50, 130, 0.16);
+}
+
+[data-theme="light"] .redes li {
+    background: linear-gradient(135deg, #241a3d, #3b2a63);
+}
+
+[data-theme="light"] .btn-secondary {
+    background: #ffffff;
+}
+
+[data-theme="light"] .nav-links a:hover {
+    color: var(--primary-purple);
+}
+
+/* ---------- 6. KEYFRAMES ---------- */
+@keyframes gradiente-vivo {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes gradiente-barra {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+@keyframes gradiente-borde {
+    0%, 100% { border-color: var(--c2); }
+    33% { border-color: var(--c3); }
+    66% { border-color: var(--c4); }
+}
+
+@keyframes respirar-titulo {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px var(--titulo-g1)) drop-shadow(0 0 14px var(--titulo-g2));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px var(--titulo-g3)) drop-shadow(0 0 26px var(--titulo-g4));
+    }
+}
+
+@keyframes flotar-titulo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes icono-vivo {
+    0%, 100% { color: var(--c1); filter: drop-shadow(0 0 6px var(--titulo-g2)); }
+    33% { color: var(--c2); filter: drop-shadow(0 0 8px var(--titulo-g1)); }
+    66% { color: var(--c3); filter: drop-shadow(0 0 8px var(--titulo-g3)); }
+}
+
+@keyframes girar-aurora {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes aurora-imagen {
+    0%, 100% {
+        filter: drop-shadow(0 0 9px var(--c2)) drop-shadow(0 0 24px var(--c1));
+    }
+    33% {
+        filter: drop-shadow(0 0 9px var(--c3)) drop-shadow(0 0 24px var(--c4));
+    }
+    66% {
+        filter: drop-shadow(0 0 9px var(--c5)) drop-shadow(0 0 24px var(--c2));
+    }
+}
+
+@keyframes respirar-logo {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+}
+
+@keyframes pulso-resplandor {
+    0%, 100% {
+        box-shadow: 0 0 12px var(--glow-a1), 0 0 26px var(--glow-a2);
+    }
+    50% {
+        box-shadow: 0 0 22px var(--glow-b1), 0 0 46px var(--glow-b2);
+    }
+}
+
+@keyframes pulso-resplandor-azul {
+    0%, 100% {
+        box-shadow: 0 0 12px var(--glow-c1), 0 0 26px var(--glow-c2);
+    }
+    50% {
+        box-shadow: 0 0 22px var(--glow-d1), 0 0 46px var(--glow-d2);
+    }
+}
+
+@keyframes pulso-whatsapp {
+    0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25); }
+    50% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3), 0 0 28px rgba(37, 211, 102, 0.45); }
+}
+
+@keyframes pulso-aurora {
+    0%, 100% { box-shadow: 0 0 8px var(--glow-c2); }
+    50% { box-shadow: 0 0 18px var(--glow-c1), 0 0 34px var(--glow-d2); }
+}
+
+@keyframes barrido-brillo {
+    0% { transform: translateX(-160%) skewX(-18deg); }
+    55%, 100% { transform: translateX(220%) skewX(-18deg); }
+}
+
+@keyframes latir-contador {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 6px rgba(255, 255, 255, 0.35); }
+    50% { transform: scale(1.18); box-shadow: 0 0 14px rgba(58, 134, 255, 0.8); }
+}
+
+@keyframes orbita-fondo {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, -40px) scale(1.15); }
+    100% { transform: translate(-50px, 35px) scale(0.95); }
+}
+
+/* ---------- 7. AJUSTES RESPONSIVOS DEL NAVBAR ---------- */
+@media only screen and (max-width: 900px) {
+    .navbar {
+        padding: 12px 5%;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .theme-toggle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .theme-toggle i {
+        font-size: 0.95rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+        gap: 10px;
+    }
+
+    .navbar-logo-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo::before {
+        width: 54px;
+        height: 54px;
+        left: -7px;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .logo span {
+        display: none;
+    }
+
+    .cart-btn {
+        padding: 7px 12px;
+    }
+}
+
+/* ---------- 8. RESPETO A PREFERENCIAS DE MOVIMIENTO ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content h1,
+    .section-title,
+    .category-title,
+    .loader-content h2,
+    .logo span,
+    .pedido-form h4,
+    #promo-modal .promo-card h4,
+    .cart-header h3,
+    .mv-box h4,
+    .review-header h4,
+    .cart-item-info h4,
+    .order-summary-item strong,
+    .redes li.titulo,
+    .titulo-3d p,
+    .poema-card-content h3,
+    .category-title i,
+    .pedido-form h4 i,
+    .cart-header h3 i,
+    .mv-icon,
+    .price,
+    .ig-link,
+    .hero-content .img-fluid,
+    .review-img-mini,
+    .navbar-logo-img,
+    .logo::before,
+    .theme-toggle,
+    .theme-toggle::before,
+    .theme-toggle::after,
+    .progress-fill,
+    .badge,
+    .cart-btn,
+    .btn-primary,
+    .btn-secondary,
+    .btn-buy-now,
+    .btn-add-cart,
+    .btn-order,
+    .btn-whatsapp-send,
+    .btn-checkout-whatsapp,
+    .poema-next-button,
+    .poema-previous-button,
+    .btn-primary::after,
+    .btn-secondary::after,
+    .btn-buy-now::after,
+    .btn-add-cart::after,
+    .btn-order::after,
+    .cart-btn::after,
+    .btn-whatsapp-send::after,
+    .btn-checkout-whatsapp::after,
+    .poema-next-button::after,
+    .hero-glow-bg,
+    #cart-count,
+    .nav-links a::after {
+        animation: none !important;
+    }
+
+    /* Sin animacion el degradado queda fijo en un punto legible */
+    .hero-content h1,
+    .section-title,
+    .category-title,
+    .loader-content h2,
+    .logo span,
+    .pedido-form h4,
+    #promo-modal .promo-card h4,
+    .cart-header h3,
+    .mv-box h4,
+    .review-header h4,
+    .cart-item-info h4,
+    .order-summary-item strong,
+    .redes li.titulo,
+    .titulo-3d p,
+    .poema-card-content h3 {
+        background-position: 0% 50%;
+        filter: none;
+    }
 }

@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="img/logo.png">
+    <meta name="theme-color" content="#0b0914" id="meta-theme-color">
+    <script>
+        /* Se aplica el tema ANTES de pintar la pagina para evitar el parpadeo.
+           La identidad de la marca es el modo oscuro, por eso es el valor
+           inicial; el visitante decide con el boton y se recuerda su eleccion. */
+        (function () {
+            var tema = 'dark';
+            try {
+                var guardado = localStorage.getItem('alashmoon-tema');
+                if (guardado === 'light' || guardado === 'dark') tema = guardado;
+            } catch (e) { /* localStorage no disponible */ }
+            document.documentElement.setAttribute('data-theme', tema);
+        })();
+    </script>
 </head>
 <body>
 
@@ -42,6 +56,14 @@
                     <button class="cart-btn" onclick="toggleCartModal()">
                         <i class="fa-solid fa-cart-shopping"></i> 
                         <span id="cart-count">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="theme-toggle" id="theme-toggle"
+                            aria-label="Cambiar entre modo oscuro y modo claro"
+                            aria-pressed="false" title="Cambiar entre modo oscuro y claro">
+                        <i class="fa-solid fa-moon icono-luna"></i>
+                        <i class="fa-solid fa-sun icono-sol"></i>
                     </button>
                 </li>
             </ul>
@@ -215,7 +237,7 @@
                         <div class="titulo-3d flex-3d">
                             <p>Ramos</p>
                             <p>de Rosas Eternas</p>
-<p>Hechos con Amor</p>
+                            <p>Hechos con Amor</p>
                         </div>
                     </div>
                 </div>

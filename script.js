@@ -1,3 +1,74 @@
+// =====================================================
+// MODO OSCURO / MODO CLARO
+// =====================================================
+const CLAVE_TEMA = 'alashmoon-tema';
+const TEMA_OSCURO = 'dark';
+const TEMA_CLARO = 'light';
+const COLOR_BARRA_TEMA = {
+    dark: '#0b0914',
+    light: '#f5f2fc'
+};
+
+function temaGuardado() {
+    try {
+        const guardado = localStorage.getItem(CLAVE_TEMA);
+        if (guardado === TEMA_OSCURO || guardado === TEMA_CLARO) return guardado;
+    } catch (e) { /* localStorage bloqueado */ }
+    return null;
+}
+
+function temaPreferidoPorDefecto() {
+    // La identidad visual de Alashmoon es el modo oscuro.
+    return TEMA_OSCURO;
+}
+
+function temaActual() {
+    return document.documentElement.getAttribute('data-theme') || TEMA_OSCURO;
+}
+
+function aplicarTema(tema, persistir = true) {
+    const nuevoTema = tema === TEMA_CLARO ? TEMA_CLARO : TEMA_OSCURO;
+    document.documentElement.setAttribute('data-theme', nuevoTema);
+
+    if (persistir) {
+        try {
+            localStorage.setItem(CLAVE_TEMA, nuevoTema);
+        } catch (e) { /* localStorage bloqueado */ }
+    }
+
+    const boton = document.getElementById('theme-toggle');
+    if (boton) {
+        const esClaro = nuevoTema === TEMA_CLARO;
+        boton.setAttribute('aria-pressed', esClaro ? 'true' : 'false');
+        boton.setAttribute('aria-label',
+            esClaro ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
+        boton.title = esClaro ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
+    }
+
+    const metaColor = document.getElementById('meta-theme-color');
+    if (metaColor) metaColor.setAttribute('content', COLOR_BARRA_TEMA[nuevoTema]);
+}
+
+function alternarTema() {
+    aplicarTema(temaActual() === TEMA_CLARO ? TEMA_OSCURO : TEMA_CLARO);
+}
+
+// Sincroniza el boton apenas se carga la pagina
+document.addEventListener('DOMContentLoaded', () => {
+    aplicarTema(temaGuardado() || temaPreferidoPorDefecto(), false);
+
+    const boton = document.getElementById('theme-toggle');
+    if (boton) boton.addEventListener('click', alternarTema);
+});
+
+// Atajos de teclado: Alt + T cambia de modo
+document.addEventListener('keydown', (evento) => {
+    if (evento.altKey && (evento.key === 't' || evento.key === 'T')) {
+        evento.preventDefault();
+        alternarTema();
+    }
+});
+
 // --- PRECARGADOR DINÁMICO CON JS ---
 window.addEventListener('DOMContentLoaded', () => {
     const progressFill = document.querySelector('.progress-fill');
